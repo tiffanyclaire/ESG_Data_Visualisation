@@ -22,9 +22,10 @@ const columns= [
   {
     name: 'Asset Name',
     selector: row => row["Fund profile: Shareclass name"],
+    width: "18%",
   },
   {
-    name: '% of account invested',
+    name: '% Invested',
     selector: row => row["Prison Free Funds: All flagged, weight"],
   },
   {
@@ -221,8 +222,13 @@ const columns= [
         <div className="content">
           <Routes>
             <Route path="/" element={
-              <div style= {{width:'90%', padding: '5%'}}> 
-                <BasicTable columns={columns} data={parsedData} />
+              <div style= {{width:'90%', padding: '5%'}}>
+                <h2 className= "Heading" >Overview of where my money is invested</h2>
+                <h5 className= "Sub-heading">Your account is broken into different financial assests. You have 6 funds.</h5>
+
+                <div style= {{width:'90%'}}> 
+                  <BasicTable columns={columns} data={parsedData} />
+                </div>
               </div>
             } />
 

@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Heading {
+  text-align: left;
+  color: black;
+  padding-bottom: 5px;;
+}
+
+.Sub-heading {
+  text-align: left;
+  color: black;
+  padding-bottom: 5px;;
+}
+
+
+
+.rdt_TableHeadRow{
+  background-color: #DCDCDC!important;
+}
