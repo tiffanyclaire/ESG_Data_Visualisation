@@ -1,10 +1,12 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import DataVis from './components/DataVis'
 import Practice from './components/Practice'
 import BarChart from './components/BarChart'
 import BasicTable from './components/BasicTable'
+import HorizontalChart from './components/HorizontalChart'
+
 import {UserData} from './Data';
 import { } from 'd3';
 import Papa from 'papaparse';
@@ -17,12 +19,21 @@ function App() {
 
   const [parsedData, setParsedData] = useState([]);
 
+  // Options for Horizontal Chart
+  const options = {
+      indexAxis: "y",
+    
+  }
+
 
 const columns= [
   {
     name: 'Asset Name',
     selector: row => row["Fund profile: Shareclass name"],
     width: "18%",
+    cell: (row) =>  (
+      <Link to={'/fund/'+ row["Fund profile: Shareclass name"]}>{row["Fund profile: Shareclass name"]}</Link>
+    )
   },
   {
     name: '% Invested',
@@ -63,22 +74,6 @@ const columns= [
   
 ];
 
-//const data= practiceData;
-
-//[
-  //{
- //   name: 'Hermione',
-   // age: 16,
-  //},
- // {
-  //  name: 'Harry',
-  //  age: 17,
- // },
-//  {
-  //  name: 'Ron',
-    //age: 18,
- // }
-//];
 
 
 //Storing csv data//
@@ -133,9 +128,6 @@ const columns= [
       header: true, 
       skipEmptyLines: true,
       complete: function(esgData){
-        //console.log(esgData, "First Print");//
-        //console.log(esgData.data[0], "Get first item"); // 
-        //console.log(esgData.data[0]["Deforestation Free Funds: Deforestation grade"]);  
         setParsedData(esgData.data);
         console.log("Parsed Data", parsedData); 
       }
@@ -256,6 +248,22 @@ const columns= [
               </div>
 
             } />
+
+
+            <Route path="/fund/:id" element={
+              <div>
+                <h2>Asset Name</h2>
+                <h5 className= "Sub-heading">This pension fund is invested in at least 1200 companies</h5>
+                <h5 className= "Sub-heading">This data was collected between 1tst August 2022 and 31st August 2022 </h5>
+
+                <div style= {{width: 1200}}>
+                  <HorizontalChart chartData={practiceData2} options={options}/> 
+                </div>
+
+              </div>
+
+            } />
+            
 
             
 
