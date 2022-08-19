@@ -1,14 +1,15 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import DataVis from './components/DataVis'
 import Practice from './components/Practice'
 import BarChart from './components/BarChart'
 import BasicTable from './components/BasicTable'
+import Fund from './components/Fund'
 import HorizontalChart from './components/HorizontalChart'
-
+import {get_fund} from './utils/getFund'
 import {UserData} from './Data';
-import { } from 'd3';
+import { csv } from 'd3';
 import Papa from 'papaparse';
 import csvData from './investValues.csv';
 
@@ -17,7 +18,36 @@ import csvData from './investValues.csv';
 
 function App() {
 
+  //All data
   const [parsedData, setParsedData] = useState([]);
+
+  
+
+ 
+
+
+  // Prison category data
+  const [practiceData, setpracticeData] = useState({
+    labels: [],
+    datasets:[{ 
+      label: "Prison Free Funds: All flagged, weight",
+      data: [],
+
+    }]
+
+  })
+
+  // Gender category data
+  const [practiceData2, setpracticeData2] = useState({
+    labels: [],
+    datasets:[{ 
+      label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
+      data: [],
+
+    }]
+
+  })
+
 
   // Options for Horizontal Chart
   const options = {
@@ -25,6 +55,7 @@ function App() {
     
   }
 
+  //Overview Table Data
 
 const columns= [
   {
@@ -32,7 +63,7 @@ const columns= [
     selector: row => row["Fund profile: Shareclass name"],
     width: "18%",
     cell: (row) =>  (
-      <Link to={'/fund/'+ row["Fund profile: Shareclass name"]}>{row["Fund profile: Shareclass name"]}</Link>
+      <Link to={'/fund/'+ row["id"]}>{row["Fund profile: Shareclass name"]}</Link>
     )
   },
   {
@@ -46,6 +77,13 @@ const columns= [
   {
     name: 'Deforestation',
     selector: row => row["Deforestation Free Funds: Deforestation grade"],
+    conditionalCellstyles: [{
+      when: row=> (row["Deforestation Free Funds: Deforestation grade"]) === "B",
+      style:{
+        backgroundColor: 'rgb(127, 255, 212)',
+
+      }
+    }],
   },
   {
     name: 'Fossil',
@@ -71,7 +109,7 @@ const columns= [
     name: 'Tobacco',
     selector: row => row["Tobacco Free Funds: Tobacco grade"],
   },
-  
+   
 ];
 
 
@@ -90,77 +128,113 @@ const columns= [
     //}]
   //})
 
-  const [dataTable, setdataTable] = useState({})
-
-  const [practiceData, setpracticeData] = useState({
-    labels: [],
-    datasets:[{ 
-      label: "Prison Free Funds: All flagged, weight",
-      data: [],
-
-    }]
-
-  })
-
-
-  const [practiceData2, setpracticeData2] = useState({
-    labels: [],
-    datasets:[{ 
-      label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
-      data: [],
-
-    }]
-
-  })
+ 
+  
   
 
   useEffect(() => {
+    
+   
+    // const parseFile = () =>{
+    //   Papa.parse(csvData, {
+    //     download: true,
+    //     header: true, 
+    //     skipEmptyLines: true,
+    //     complete: function(esgData){
+    //       setParsedData(esgData.data);
+    //       console.log("Parsed Data", parsedData); 
+    //     }
+    //   });
+    // }
+
+    // parseFile();
+    
+    //Parse CSV file and store data
+
+    csv(csvData).then(data => {
+      console.log(data);
+      setParsedData(data);
+    })
+    
+    // async function getData() {
+    //   csv(csvData).then(data => {
+    //        console.log(data);
+    //        setParsedData(data);
+    //      })
+
+    // }
+
+  // /  getData();
+
+
+    // for (let i=0; i< parsedData.length; i++){
+  
+    //   a.push(parsedData[i]["Fund profile: Shareclass name"]);
+    //   b.push(parseFloat(parsedData[i]["Prison Free Funds: All flagged, weight"]));
+    //   c.push(parsedData[i]["Fund profile: Shareclass name"]);
+    //   d.push(parseFloat(parsedData[i]["Gender Equality Funds: Weight of holdings with Equileap gender equality scores"]));
+    
+    // }
+  
+
+    // for (let i=0; i< parsedData.length; i++){
+  
+    //   c.push(parsedData[i]["Fund profile: Shareclass name"]);
+    //   d.push(parseFloat(parsedData[i]["Gender Equality Funds: Weight of holdings with Equileap gender equality scores"]));
+      
+     
+
+    // }
+
+  //   setpracticeData( {
+  //     labels: a,
+  //     datasets: [{
+  //     label: "Prison Free Funds: All flagged, weight",
+  //     data: b,
+  //   }]
+
+  //   })
+
+  //   setpracticeData2( {
+  //     labels: c,
+  //     datasets: [{
+  //     label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
+  //     data: d,
+  //   }]
+
+  //   })
+
+
+  // // Get fund data by name and store data
+  // const new_fund = get_fund("1919 Socially Responsive Balanced A", parsedData)
+  // setindvFund(new_fund);
+  // console.log(new_fund, "indvfund");
+  // console.log(parsedData);
+
+    
+ }, []);
+
+  
+ useEffect(() => {
+
     const a = [];
     const b = [];
     
-
     const c = [];
     const d = [];
-    
 
-    Papa.parse(csvData, {
-      download: true,
-      header: true, 
-      skipEmptyLines: true,
-      complete: function(esgData){
-        setParsedData(esgData.data);
-        console.log("Parsed Data", parsedData); 
-      }
-    });
-
-    for (let i=0; i< parsedData.length; i++){
-      console.log(parsedData[i], "for loop");//
-  
+   for (let i=0; i< parsedData.length; i++){
   
       a.push(parsedData[i]["Fund profile: Shareclass name"]);
       b.push(parseFloat(parsedData[i]["Prison Free Funds: All flagged, weight"]));
-      console.log("a", a);
-      console.log("b", b);
-     
-
-    }
-    console.log("a", a);
-    console.log("b", b);
-
-
-    for (let i=0; i< parsedData.length; i++){
-      console.log(parsedData[i], "for loop");//
-  
-  
       c.push(parsedData[i]["Fund profile: Shareclass name"]);
       d.push(parseFloat(parsedData[i]["Gender Equality Funds: Weight of holdings with Equileap gender equality scores"]));
-      console.log("a", a);
-      console.log("b", b);
-     
-
+    
     }
 
-    setpracticeData( {
+
+
+      setpracticeData( {
       labels: a,
       datasets: [{
       label: "Prison Free Funds: All flagged, weight",
@@ -169,40 +243,11 @@ const columns= [
 
     })
 
-    setpracticeData2( {
-      labels: c,
-      datasets: [{
-      label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
-      data: d,
-    }]
-
-    })
 
     
-
-    
-  }, [parsedData])
-
   
 
-  // BOTH CSV READERS WORK //
-
-   //useEffect(() => {
-   // csv(csvData).then(data => {
-    // console.log(data);
-      //});
-  
-   // }, []);
-
-    //csv(csvData).then(function(data){
-     // console.log(data)
-     // })
-      //.catch(function(error){//
-
-     // })
-
-    
-
+  }, [parsedData]);
 
 
 
@@ -226,7 +271,7 @@ const columns= [
 
             <Route path="/prison" element={
               <div>
-                <h2>First Graph</h2>
+                <h2>Prison</h2>
 
                 <div style= {{width: 1200}}>
                   <BarChart chartData={practiceData}/> 
@@ -252,12 +297,10 @@ const columns= [
 
             <Route path="/fund/:id" element={
               <div>
-                <h2>Asset Name</h2>
-                <h5 className= "Sub-heading">This pension fund is invested in at least 1200 companies</h5>
-                <h5 className= "Sub-heading">This data was collected between 1tst August 2022 and 31st August 2022 </h5>
+                
 
                 <div style= {{width: 1200}}>
-                  <HorizontalChart chartData={practiceData2} options={options}/> 
+                  <Fund data={parsedData}/> 
                 </div>
 
               </div>
@@ -281,6 +324,8 @@ const columns= [
       </div>
 
     </Router>
+
+   
 
     
   );
