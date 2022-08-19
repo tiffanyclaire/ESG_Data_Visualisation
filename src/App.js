@@ -24,8 +24,6 @@ function App() {
   
 
  
-
-
   // Prison category data
   const [practiceData, setpracticeData] = useState({
     labels: [],
@@ -243,6 +241,15 @@ const columns= [
 
     })
 
+    setpracticeData2( {
+          labels: c,
+          datasets: [{
+          label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
+          data: d,
+        }]
+    
+        })
+
 
     
   
@@ -271,7 +278,7 @@ const columns= [
 
             <Route path="/prison" element={
               <div>
-                <h2>Prison</h2>
+                <h2>Prison Industrial Complex</h2>
 
                 <div style= {{width: 1200}}>
                   <BarChart chartData={practiceData}/> 
