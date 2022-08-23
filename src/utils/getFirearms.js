@@ -6,8 +6,7 @@ export function getFirearms(fund){
       a.push(parseFloat(fund["Gun Free Funds: Civilian firearm, weight"]));
       a.push(parseFloat(fund["Gun Free Funds: Gun manufacturer, weight"]));
       a.push(parseFloat(fund["Gun Free Funds: Civilian firearm, weight"]));
-      
-      console.log(fund["Gun Free Funds: Civilian firearm, weight"]);
+    
     //}
  return a;
 
