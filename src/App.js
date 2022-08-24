@@ -6,9 +6,14 @@ import Practice from './components/Practice'
 import BarChart from './components/BarChart'
 import BasicTable from './components/BasicTable'
 import Fund from './components/Fund'
-import HorizontalChart from './components/HorizontalChart'
+import PrisonIndustry from './components/PrisonIndustry'
+import Guns from './components/Guns'
+import FossilFuels from './components/FossilFuels'
+import GenderEquality from './components/GenderEquality'
+import Deforestation from './components/Deforestation'
+import Tobacco from './components/Tobacco'
+import HorizontalChart from './components/GenderEquality'
 import {get_fund} from './utils/getFund'
-import {UserData} from './Data';
 import { csv } from 'd3';
 import Papa from 'papaparse';
 import csvData from './investValues.csv';
@@ -277,11 +282,16 @@ const columns= [
             } />
 
             <Route path="/prison" element={
-              <div>
-                <h2>Prison Industrial Complex</h2>
+              <div style= {{width:'90%', padding: '5%'}}>
+                <h2 className= "Heading">Prison Industrial Complex</h2>
+                <h5 className= "Sub-heading">Funds are screened for investments in companies with involvement in the prison industrial complex.</h5>
 
                 <div style= {{width: 1200}}>
                   <BarChart chartData={practiceData}/> 
+                </div>
+
+                <div>
+                  <PrisonIndustry data= {parsedData}/>
                 </div>
 
               </div>
@@ -297,6 +307,11 @@ const columns= [
                   <BarChart chartData={practiceData2}/> 
                 </div>
 
+                <div style= {{width: 1200}}>
+                  <GenderEquality data={parsedData}/> 
+                </div>
+                
+
               </div>
 
             } />
@@ -308,6 +323,56 @@ const columns= [
 
                 <div style= {{width: 1200}}>
                   <Fund data={parsedData}/> 
+                </div>
+
+              </div>
+              
+
+            } />
+
+
+            <Route path="/guns" element={
+              <div>
+                <h2>Guns</h2>
+
+                <div style= {{width: 1200}}>
+                  <Guns data= {parsedData}/> 
+                </div>
+
+              </div>
+
+            } />
+
+            <Route path="/fossilfuels" element={
+              <div>
+                <h2>Fossil Fuels</h2>
+
+                <div style= {{width: 1200}}>
+                  <FossilFuels data= {parsedData}/> 
+                </div>
+
+              </div>
+
+            } />
+
+            <Route path="/deforestation" element={
+              <div>
+                <h2>Deforestation</h2>
+
+                <div style= {{width: 1200}}>
+                  <Deforestation data= {parsedData}/> 
+                </div>
+
+              </div>
+
+            } />
+
+            <Route path="/tobacco" element={
+              <div>
+                <h2>Tobacco</h2>
+
+                <div style= {{width: 1200}}>
+                  <Tobacco data= {parsedData}/> 
                 </div>
 
               </div>
