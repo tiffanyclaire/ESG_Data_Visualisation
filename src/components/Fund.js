@@ -1,9 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import  {get_fund } from '../utils/getFund.js'
 import { get_deforest } from '../utils/getDeforest.js'
 import { get_fossil } from '../utils/getFossil.js'
 import { getFirearms } from '../utils/getFirearms.js'
+import { get_guns } from '../utils/getGuns.js'
+import { get_gender } from '../utils/getGender.js'
+import { get_prison } from '../utils/getPrison.js'
+import { get_tobacco } from '../utils/getTobacco.js'
+import { get_weapons } from '../utils/getWeapons.js'
 import { Bar , Doughnut } from 'react-chartjs-2'
 
 
@@ -42,6 +47,89 @@ function Fund ({data}) {
     }]
     });
 
+    // Guns
+    const [gunHoldings, setgunHoldings] = useState({
+        labels: [],
+        datasets:[{ 
+        label: "Fossil Fuel Investments",
+        data: [],
+
+    }]
+    });
+
+    // Gender
+    const [genderScore, setgenderScore] = useState({
+        labels: [],
+        datasets:[{ 
+        label: "Fossil Fuel Investments",
+        data: [],
+
+    }]
+    });
+
+    // Prison
+    const [prisonHoldings, setprisonHoldings] = useState({
+        labels: [],
+        datasets:[{ 
+        label: "Fossil Fuel Investments",
+        data: [],
+
+    }]
+    });
+
+    // Tobacco
+    const [tobaccoHoldings, settobaccoHoldings] = useState({
+        labels: [],
+        datasets:[{ 
+        label: "Fossil Fuel Investments",
+        data: [],
+
+    }]
+    });
+
+    // Weapons
+    const [weaponHoldings, setweaponHoldings] = useState({
+        labels: [],
+        datasets:[{ 
+        label: "Fossil Fuel Investments",
+        data: [],
+
+    }]
+    });
+
+
+    useEffect(() => {
+
+        //Get fund data by name and store data
+        const new_fund = get_fund(id, data)
+        setindvFund(new_fund);
+        console.log(data);
+        console.log(indvFund, "check indvfund");
+        console.log(parseFloat(indvFund["Gun Free Funds: Civilian firearm, weight"]), "CHECKING");
+    
+        },[data, id, indvFund]); 
+    
+        useEffect(() =>{
+            const firearmsData = getFirearms(indvFund);
+    
+            setfundFirearms( {
+                labels: ["Civilian firearm, weight", "Gun manufacturer, weight", "Gun retailer, weight"],
+                datasets: [{
+                label: "Percent of fund assets found on major weapon screen lists ",
+                data: firearmsData,
+              }]
+          
+              })
+    
+              
+    
+        },[indvFund]);
+    
+        console.log(fundFirearms, " FIREARMS");
+
+
+    // Graphs for Holdings //
+
     useEffect(() =>{
         const deforest = get_deforest(indvFund)
         setforestHoldings( {
@@ -63,41 +151,65 @@ function Fund ({data}) {
       
           })
 
+          const guns = get_guns(indvFund)
+          setgunHoldings( {
+            labels: ["Other Holdings", "Fossil Fuels"],
+            datasets: [{
+            label: "Percent of fund assets found on major weapon screen lists ",
+            data: guns,
+          }]
+      
+          })
+
+          const gender = get_gender(indvFund)
+          setgenderScore( {
+            labels: ["", "Overall Score (Out of 100)"],
+            datasets: [{
+            label: "Percent of fund assets found on major weapon screen lists ",
+            data: gender,
+          }]
+      
+          })
+
+          const prison = get_prison(indvFund)
+          setprisonHoldings( {
+            labels: ["Other Holdings", "Prison Industry"],
+            datasets: [{
+            label: "Percent of fund assets found on major weapon screen lists ",
+            data: prison,
+          }]
+      
+          })
+
+          const tobacco = get_tobacco(indvFund)
+          settobaccoHoldings( {
+            labels: ["Other Holdings", "Tobacco Producer"],
+            datasets: [{
+            label: "Percent of fund assets found on major weapon screen lists ",
+            data: tobacco,
+          }]
+      
+          })
+
+          const weapons = get_weapons(indvFund)
+          setweaponHoldings( {
+            labels: ["Other Holdings", "Tobacco Producer"],
+            datasets: [{
+            label: "Percent of fund assets found on major weapon screen lists ",
+            data: weapons,
+          }]
+      
+          })
+
 
 
     } , [indvFund]);
 
     console.log(forestHoldings, "deforest");
     console.log(fossilHoldings, "fossil");
+    console.log(prisonHoldings, "prison");
 
-    useEffect(() => {
-
-    //Get fund data by name and store data
-    const new_fund = get_fund(id, data)
-    setindvFund(new_fund);
-    console.log(data);
-    console.log(indvFund, "check indvfund");
-    console.log(parseFloat(indvFund["Gun Free Funds: Civilian firearm, weight"]), "CHECKING");
-
-    },[data, id, indvFund]); 
-
-    useEffect(() =>{
-        const firearmsData = getFirearms(indvFund);
-
-        setfundFirearms( {
-            labels: ["Civilian firearm, weight", "Gun manufacturer, weight", "Gun retailer, weight"],
-            datasets: [{
-            label: "Percent of fund assets found on major weapon screen lists ",
-            data: firearmsData,
-          }]
-      
-          })
-
-          
-
-    },[indvFund]);
-
-    console.log(fundFirearms, " FIREARMS");
+    
 
     
    
@@ -105,6 +217,7 @@ function Fund ({data}) {
         <div style= {{width:'90%', padding: '5%'}}>
 
         {/* <h2 className= "Heading"> {indvFund["Fund profile: Shareclass name"]}</h2> */}
+        <h2 className= "Heading">Shareclass Type: { indvFund["Fund profile: Shareclass name"]} </h2>
         <h3 className= "Sub-heading">Fund ID: { id } </h3>
         <h3 className= "Sub-heading">Shareclass Type: { indvFund["Fund profile: Shareclass type"]} </h3>
         <h5 className= "Sub-heading">This pension fund is invested in at least 1200 companies</h5>
@@ -114,36 +227,51 @@ function Fund ({data}) {
         <div>
 
         </div>
-            <h3 className= "Heading">Gender Equality</h3>
-        <div style= {{width:'30%'}}>
-            <h3 className= "Heading">Deforestation</h3>
-            <Doughnut data={forestHoldings} />
+        <div className= "chartContainer">
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">Gender Equality</h3>
+                <Doughnut data={genderScore} />
+            </div>
+
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">Deforestation</h3>
+                <Doughnut data={forestHoldings} />
+            </div>
+
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">Fossil Fuels</h3> 
+                <Doughnut data={fossilHoldings} />  
+            </div>
+        </div>
+        
+        <div className= "chartContainer">
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">Prison Industrial Complex</h3>
+                <Doughnut data={prisonHoldings} />  
+            </div>
+
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">Military Weapons</h3> 
+                <Doughnut data={weaponHoldings} /> 
+            </div>
+
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">Guns</h3>
+                <Doughnut data={gunHoldings} />
+            </div>
+
+            {/* <div style= {{width:'90%'}}>
+                <h3 className= "Heading">Guns</h3>
+                <Bar data={fundFirearms} />
+            </div> */}
         </div>
 
-        <div style= {{width:'30%'}}>
-            <h3 className= "Heading">Fossil Fuels</h3> 
-            <Doughnut data={fossilHoldings} />  
-        </div>
+        <div className= "chartContainer">
 
-        <div>
-            <h3 className= "Heading">Prison Industrial Complex</h3>  
-        </div>
-
-        <div>
-            <h3 className= "Heading">Military Weapons</h3> 
-        </div>
-
-        <div style= {{width:'90%'}}>
-            <h3 className= "Heading">Guns</h3>
-            <Bar data={fundFirearms} />
-        </div>
-
-        <div>
-            <h3 className= "Heading">Guns</h3>
-        </div>
-
-        <div>
-            <h3 className= "Heading">Tobacco</h3>
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">Tobacco</h3>
+                <Doughnut data={tobaccoHoldings} />
+            </div>
         </div>
 
 

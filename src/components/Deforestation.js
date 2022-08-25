@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect} from 'react';
 import {  compareDeforestConsumer } from '../utils/compareDeforestConsumer.js'
 import {  compareDeforestProducer } from '../utils/compareDeforestProducer.js'
 import {  compareDeforestFinancier } from '../utils/compareDeforestFinancier.js'
@@ -52,6 +52,21 @@ function Deforestation ({data}) {
 
 
     useEffect(() =>{
+        const deforest = compareDeforestProducer(data);
+        setdeforestProducer( {
+            labels: deforest.labels,
+            datasets: [{
+            label: "Deforestation-risk producer, weight",
+            data: deforest.data,
+          }]
+      
+          })
+          
+
+    }, [data])
+
+
+    useEffect(() =>{
         const deforest = compareDeforestFinancier(data);
         setdeforestFinancier( {
             labels: deforest.labels,
@@ -64,6 +79,8 @@ function Deforestation ({data}) {
           
 
     }, [data])
+
+    console.log(deforestProducer, "PRODUCER");
    
 
 

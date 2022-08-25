@@ -64,3 +64,9 @@
   margin-bottom: 5%;
 
 }
+
+.chartContainer{
+  display: flex;
+  align-items: center;
+  
+}
