@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
-import DataVis from './components/DataVis'
 import Practice from './components/Practice'
 import BarChart from './components/BarChart'
 import BasicTable from './components/BasicTable'
@@ -12,6 +11,7 @@ import FossilFuels from './components/FossilFuels'
 import GenderEquality from './components/GenderEquality'
 import Deforestation from './components/Deforestation'
 import Tobacco from './components/Tobacco'
+import Weapons from './components/Weapons'
 import HorizontalChart from './components/GenderEquality'
 import {get_fund} from './utils/getFund'
 import { csv } from 'd3';
@@ -281,21 +281,27 @@ const columns= [
               </div>
             } />
 
-            <Route path="/prison" element={
-              <div style= {{width:'90%', padding: '5%'}}>
-                <h2 className= "Heading">Prison Industrial Complex</h2>
-                <h5 className= "Sub-heading">Funds are screened for investments in companies with involvement in the prison industrial complex.</h5>
 
+            <Route path="/fund/:id" element={
+              <div>
+              
                 <div style= {{width: 1200}}>
-                  <BarChart chartData={practiceData}/> 
+                  <Fund data={parsedData}/> 
                 </div>
 
+              </div>
+            } />
+
+
+            <Route path="/prison" element={
+              <div>
+                <h2>Prison Industry</h2>
+              
                 <div>
                   <PrisonIndustry data= {parsedData}/>
                 </div>
 
-              </div>
-
+                </div>
             } />
 
 
@@ -303,11 +309,7 @@ const columns= [
               <div>
                 <h2>Gender Equality</h2>
 
-                <div style= {{width: 1200}}>
-                  <BarChart chartData={practiceData2}/> 
-                </div>
-
-                <div style= {{width: 1200}}>
+                <div>
                   <GenderEquality data={parsedData}/> 
                 </div>
                 
@@ -317,25 +319,14 @@ const columns= [
             } />
 
 
-            <Route path="/fund/:id" element={
-              <div>
-                
-
-                <div style= {{width: 1200}}>
-                  <Fund data={parsedData}/> 
-                </div>
-
-              </div>
-              
-
-            } />
+            
 
 
             <Route path="/guns" element={
               <div>
                 <h2>Guns</h2>
 
-                <div style= {{width: 1200}}>
+                <div>
                   <Guns data= {parsedData}/> 
                 </div>
 
@@ -347,7 +338,7 @@ const columns= [
               <div>
                 <h2>Fossil Fuels</h2>
 
-                <div style= {{width: 1200}}>
+                <div>
                   <FossilFuels data= {parsedData}/> 
                 </div>
 
@@ -359,7 +350,7 @@ const columns= [
               <div>
                 <h2>Deforestation</h2>
 
-                <div style= {{width: 1200}}>
+                <div>
                   <Deforestation data= {parsedData}/> 
                 </div>
 
@@ -371,8 +362,20 @@ const columns= [
               <div>
                 <h2>Tobacco</h2>
 
-                <div style= {{width: 1200}}>
+                <div>
                   <Tobacco data= {parsedData}/> 
+                </div>
+
+              </div>
+
+            } />
+
+            <Route path="/weapons" element={
+              <div>
+                <h2>Weapons</h2>
+
+                <div>
+                  <Weapons data= {parsedData}/> 
                 </div>
 
               </div>

@@ -21,7 +21,7 @@ function GenderEquality ({data}) {
         setgenderEquality( {
             labels: gender.labels,
             datasets: [{
-            label: "dhjhdthyht ",
+            label: "Gender equality score - Overall score (out of 100 points)",
             data: gender.data,
           }]
       
@@ -36,8 +36,12 @@ function GenderEquality ({data}) {
 
     return (
         <div style= {{width:'90%', padding: '5%'}}>
-            <h3 className= "Heading">Gender Equality</h3>  
-            <Bar data= {genderEquality}/>
+            <div className= "containerLarge">  
+                <h3 className= "Heading">Overall Gender Equality Scores</h3> 
+                <div className="barChart">
+                    <Bar data= {genderEquality}/>
+                </div> 
+            </div>
         </div>
 
 

@@ -21,7 +21,7 @@ function FossilFuels ({data}) {
         setfossilFuels( {
             labels: firearms.labels,
             datasets: [{
-            label: "Percent of fund assets found on major weapon screen lists ",
+            label: "Fossil fuel holdings, weight",
             data: firearms.data,
           }]
       
@@ -34,8 +34,12 @@ function FossilFuels ({data}) {
 
     return (
         <div style= {{width:'90%', padding: '5%'}}>
-            <h3 className= "Heading">Fossil Fuels</h3>  
-            <Bar data= {fossilFuels}/>
+            <div className= "containerLarge">  
+                <h3 className= "Heading">Fossil Fuels</h3> 
+                <div className= "barChart">
+                    <Bar data= {fossilFuels}/>
+                </div> 
+            </div>
         </div>
 
 

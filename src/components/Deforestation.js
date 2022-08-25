@@ -1,10 +1,30 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {  compareDeforestConsumer } from '../utils/compareDeforestConsumer.js'
+import {  compareDeforestProducer } from '../utils/compareDeforestProducer.js'
+import {  compareDeforestFinancier } from '../utils/compareDeforestFinancier.js'
 import { Bar } from 'react-chartjs-2'
 
 function Deforestation ({data}) {
 
-    const [deforestation , setdeforestation] = useState({
+    const [deforestConsumer , setdeforestConsumer] = useState({
+        labels: [],
+        datasets:[{ 
+        label: "sdrfgsagras",
+        data: [],
+
+    }]
+    });
+
+    const [deforestProducer , setdeforestProducer] = useState({
+        labels: [],
+        datasets:[{ 
+        label: "sdrfgsagras",
+        data: [],
+
+    }]
+    });
+
+    const [deforestFinancier , setdeforestFinancier] = useState({
         labels: [],
         datasets:[{ 
         label: "sdrfgsagras",
@@ -18,10 +38,10 @@ function Deforestation ({data}) {
 
     useEffect(() =>{
         const deforest = compareDeforestConsumer(data);
-        setdeforestation( {
+        setdeforestConsumer( {
             labels: deforest.labels,
             datasets: [{
-            label: "dhjhdthyht ",
+            label: "Deforestation-risk producer, weight",
             data: deforest.data,
           }]
       
@@ -30,14 +50,45 @@ function Deforestation ({data}) {
 
     }, [data])
 
-    console.log(deforestation, " GENDER CHECK ")
+
+    useEffect(() =>{
+        const deforest = compareDeforestFinancier(data);
+        setdeforestFinancier( {
+            labels: deforest.labels,
+            datasets: [{
+            label: "Deforestation-risk financier, weight",
+            data: deforest.data,
+          }]
+      
+          })
+          
+
+    }, [data])
    
 
 
     return (
         <div style= {{width:'90%', padding: '5%'}}>
-            <h3 className= "Heading">Deforestation Consumer Brand</h3>  
-            <Bar data= {deforestation}/>
+            <div className= "containerLarge">  
+                <h3 className= "Heading">Major Consumer Brand</h3> 
+                <div className="barChart">
+                    <Bar data= {deforestConsumer}/>
+                </div> 
+            </div>
+
+            <div className= "containerLarge">  
+                <h3 className= "Heading">Producer</h3> 
+                <div className="barChart">
+                    <Bar data= {deforestProducer}/>
+                </div> 
+            </div>
+
+            <div className= "containerLarge">  
+                <h3 className= "Heading">Financier</h3> 
+                <div className="barChart">
+                    <Bar data= {deforestFinancier}/>
+                </div> 
+            </div>
         </div>
 
 

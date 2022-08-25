@@ -21,7 +21,7 @@ function Tobacco ({data}) {
         settobacco( {
             labels: deforest.labels,
             datasets: [{
-            label: "dhjhdthyht ",
+            label: "Tobacco producer, weight",
             data: deforest.data,
           }]
       
@@ -36,8 +36,12 @@ function Tobacco ({data}) {
 
     return (
         <div style= {{width:'90%', padding: '5%'}}>
-            <h3 className= "Heading">Tobacco Producer Weight</h3>  
-            <Bar data= {tobacco}/>
+            <div className= "containerLarge">  
+                <h3 className= "Heading">Tobacco Producer Weight</h3> 
+                <div className="barChart">
+                    <Bar data= {tobacco}/>
+                </div>
+            </div>
         </div>
 
 
