@@ -9,6 +9,7 @@ import { get_gender } from '../utils/getGender.js'
 import { get_prison } from '../utils/getPrison.js'
 import { get_tobacco } from '../utils/getTobacco.js'
 import { get_weapons } from '../utils/getWeapons.js'
+import ReportCard from '../components/ReportCard'
 import { Bar , Doughnut } from 'react-chartjs-2'
 
 
@@ -133,30 +134,43 @@ function Fund ({data}) {
     useEffect(() =>{
         const deforest = get_deforest(indvFund)
         setforestHoldings( {
-            labels: ["Other Holdings", "Deforestation"],
+            labels: ["Other", "Deforestation"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: deforest,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.1)',
+                'rgba(255, 118, 0, 0.6)'
+            ]
+            
           }]
       
           })
 
         const fossil = get_fossil(indvFund)
         setfossilHoldings( {
-            labels: ["Other Holdings", "Fossil Fuels"],
+            labels: ["Other", "Fossil Fuels"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: fossil,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.1)',
+                'rgba(0, 103, 0, 0.6)'
+            ]
           }]
       
           })
 
           const guns = get_guns(indvFund)
           setgunHoldings( {
-            labels: ["Other Holdings", "Fossil Fuels"],
+            labels: ["Other", "Fossil Fuels"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: guns,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.1)',
+                'rgba(0, 44, 255, 0.7)'
+            ]
           }]
       
           })
@@ -167,36 +181,52 @@ function Fund ({data}) {
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: gender,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.1)',
+                'rgba(0, 123, 253, 0.6)'
+            ]
           }]
       
           })
 
           const prison = get_prison(indvFund)
           setprisonHoldings( {
-            labels: ["Other Holdings", "Prison Industry"],
+            labels: ["Other", "Prison Industry"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: prison,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.1)',
+                'rgba(90, 21, 255, 0.6)'
+            ]
           }]
       
           })
 
           const tobacco = get_tobacco(indvFund)
           settobaccoHoldings( {
-            labels: ["Other Holdings", "Tobacco Producer"],
+            labels: ["Other", "Tobacco Producer"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: tobacco,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.1)',
+                'rgba(255, 0, 0, 0.7)'
+            ]
           }]
       
           })
 
           const weapons = get_weapons(indvFund)
           setweaponHoldings( {
-            labels: ["Other Holdings", "Tobacco Producer"],
+            labels: ["Other", "Tobacco Producer"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: weapons,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.1)',
+                'rgba(239, 0, 117, 0.6)'
+            ]
           }]
       
           })
@@ -222,6 +252,8 @@ function Fund ({data}) {
         <h3 className= "Sub-heading">Shareclass Type: { indvFund["Fund profile: Shareclass type"]} </h3>
         <h5 className= "Sub-heading">This pension fund is invested in at least 1200 companies</h5>
         <h5 className= "Sub-heading">This data was collected between 1tst August 2022 and 31st August 2022 </h5>
+
+        <ReportCard data={indvFund}/>
 
         {/* <h2>{indvFund['id']}</h2> */}
         <div>
