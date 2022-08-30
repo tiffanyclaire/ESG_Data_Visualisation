@@ -1,8 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {  compareFossil } from '../utils/compareFossil.js'
 import { Bar } from 'react-chartjs-2'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 function FossilFuels ({data}) {
+
+    const options = {
+        plugins:{
+          datalabels: {
+            display: true,
+            color: 'black',
+            align: "top",
+            anchor: "end",
+            offset: 10,
+            formatter: function(value, context) {
+                return  Math.round(value) + '%'
+            }
+          }
+        }
+      };
 
     const [fossilFuels , setfossilFuels] = useState({
         labels: [],
@@ -37,7 +53,7 @@ function FossilFuels ({data}) {
             <div className= "containerLarge">  
                 <h3 className= "Heading">Fossil Fuels</h3> 
                 <div className= "barChart">
-                    <Bar data= {fossilFuels}/>
+                    <Bar data= {fossilFuels} plugins={[ChartDataLabels]} options={options}/>
                 </div> 
             </div>
         </div>

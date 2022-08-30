@@ -1,8 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {  compareGender } from '../utils/compareGender.js'
 import { Bar } from 'react-chartjs-2'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 function GenderEquality ({data}) {
+
+    const options = {
+        plugins:{
+          datalabels: {
+            display: true,
+            color: 'black',
+            align: "top",
+            anchor: "end",
+            offset: 10,
+          }
+        }
+      };
 
     const [genderEquality , setgenderEquality] = useState({
         labels: [],
@@ -39,7 +52,7 @@ function GenderEquality ({data}) {
             <div className= "containerLarge">  
                 <h3 className= "Heading">Overall Gender Equality Scores</h3> 
                 <div className="barChart">
-                    <Bar data= {genderEquality}/>
+                    <Bar data= {genderEquality} plugins={[ChartDataLabels]} options={options}/>
                 </div> 
             </div>
         </div>

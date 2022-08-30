@@ -4,8 +4,24 @@ import {  compareMilitaryContractor } from '../utils/compareMilitaryContractor.j
 import {  compareNuclear } from '../utils/compareNuclear.js'
 import {  compareCluster } from '../utils/compareCluster.js'
 import { Bar } from 'react-chartjs-2'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 function Deforestation ({data}) {
+
+    const options = {
+        plugins:{
+          datalabels: {
+            display: true,
+            color: 'black',
+            align: "top",
+            anchor: "end",
+            offset: 10,
+            formatter: function(value, context) {
+                return  Math.round(value) + '%'
+            }
+          }
+        }
+      };
 
     const [militaryWeapon , setmilitaryWeapon] = useState({
         labels: [],
@@ -111,7 +127,7 @@ function Deforestation ({data}) {
             <div className= "containerLarge">  
                 <h3 className= "Heading">Military Weapons</h3> 
                 <div className="barChart">
-                    <Bar data= {militaryWeapon}/>
+                    <Bar data= {militaryWeapon} plugins={[ChartDataLabels]} options={options}/>
                 </div>
             </div>
 
@@ -119,21 +135,21 @@ function Deforestation ({data}) {
             <div className= "containerLarge">  
                 <h3 className= "Heading">Major Military Contractors</h3> 
                 <div className="barChart">
-                    <Bar data= {militaryContractor}/>
+                    <Bar data= {militaryContractor} plugins={[ChartDataLabels]} options={options}/>
                 </div>
             </div>
 
             <div className= "containerLarge">  
                 <h3 className= "Heading">Nuclear Weapons</h3> 
                 <div className="barChart">
-                    <Bar data= {nuclearWeapon}/>
+                    <Bar data= {nuclearWeapon} plugins={[ChartDataLabels]} options={options}/>
                 </div>
             </div>
             
             <div className= "containerLarge">  
                 <h3 className= "Heading">Cluster Munitions</h3> 
                 <div className="barChart">
-                    <Bar data= {clusterMunitions}/>
+                    <Bar data= {clusterMunitions} plugins={[ChartDataLabels]} options={options}/>
                 </div>
             </div>
         </div>

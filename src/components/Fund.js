@@ -11,11 +11,25 @@ import { get_tobacco } from '../utils/getTobacco.js'
 import { get_weapons } from '../utils/getWeapons.js'
 import ReportCard from '../components/ReportCard'
 import { Bar , Doughnut } from 'react-chartjs-2'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
+
+
 
 
 
 function Fund ({data}) {
     const { id } = useParams();
+
+    const options = {
+        plugins:{
+          dataLabels: {
+            display: true,
+            color: 'black',
+            align: "end",
+            anchor: "end",
+          }
+        }
+      };
 
     //Individual Fund
     const [indvFund, setindvFund] = useState([]);
@@ -267,7 +281,7 @@ function Fund ({data}) {
 
             <div style= {{width:'30%'}}>
                 <h3 className= "Heading">Deforestation</h3>
-                <Doughnut data={forestHoldings} />
+                <Doughnut data={forestHoldings} plugins={[ ChartDataLabels ]}/>
             </div>
 
             <div style= {{width:'30%'}}>

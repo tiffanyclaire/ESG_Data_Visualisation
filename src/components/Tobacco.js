@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {  compareTobacco } from '../utils/compareTobacco.js'
 import { Bar } from 'react-chartjs-2'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 function Tobacco ({data}) {
 
@@ -13,10 +14,26 @@ function Tobacco ({data}) {
     }]
     });
 
+    const options = {
+        plugins:{
+          datalabels: {
+            display: true,
+            color: 'black',
+            align: "top",
+            anchor: "end",
+            offset: 10,
+            formatter: function(value, context) {
+                return  Math.round(value) + '%'
+            }
+          }
+        }
+      };
+
 
 
 
     useEffect(() =>{
+        
         const deforest = compareTobacco(data);
         settobacco( {
             labels: deforest.labels,
@@ -30,7 +47,7 @@ function Tobacco ({data}) {
 
     }, [data])
 
-    console.log(tobacco, " GENDER CHECK ")
+
    
 
 
@@ -39,7 +56,7 @@ function Tobacco ({data}) {
             <div className= "containerLarge">  
                 <h3 className= "Heading">Tobacco Producer Weight</h3> 
                 <div className="barChart">
-                    <Bar data= {tobacco}/>
+                    <Bar data= {tobacco} plugins={[ChartDataLabels]} options={options}/>
                 </div>
             </div>
         </div>

@@ -13,11 +13,11 @@ import Deforestation from './components/Deforestation'
 import Tobacco from './components/Tobacco'
 import Weapons from './components/Weapons'
 import HorizontalChart from './components/GenderEquality'
-import {get_fund} from './utils/getFund'
 import { csv } from 'd3';
 import Papa from 'papaparse';
 import csvData from './investValues.csv';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+//Chart.register(ChartDataLabels);
 
 
 
@@ -25,6 +25,15 @@ function App() {
 
   //All data
   const [parsedData, setParsedData] = useState([]);
+
+  const options = {
+    plugins:{
+      dataLabels: {
+        display: true,
+        color: 'black',
+      }
+    }
+  };
 
   
 
@@ -53,10 +62,10 @@ function App() {
 
 
   // Options for Horizontal Chart
-  const options = {
-      indexAxis: "y",
+  //const options = {
+   //   indexAxis: "y",
     
-  }
+  //}
 
   //Overview Table Data
 

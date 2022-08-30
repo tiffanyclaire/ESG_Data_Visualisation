@@ -81,24 +81,23 @@
   
 }
 
+.card-title{
 
+}
 .card-container{
-  width: 225px;
+  
 }
 
 .card{
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 5px;
+  width: 225px;
+  height: 350px;
 
 }
 
 .rating-text{
   font-weight: bold;
-  padding: 2px;
-}
-
-.heading-text{
-  padding: 2px;
- 
+  margin: 10px;
 }
