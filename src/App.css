@@ -47,11 +47,26 @@
 .Sub-heading {
   text-align: left;
   color: black;
-  padding-bottom: 5px;;
+  padding-bottom: 3px;
 }
 
 
 
 .rdt_TableHeadRow{
   background-color: #DCDCDC!important;
+}
+
+.barChart{
+  width: 80%;
+}
+
+.containerLarge{
+  margin-bottom: 5%;
+
+}
+
+.chartContainer{
+  display: flex;
+  align-items: center;
+  
 }
