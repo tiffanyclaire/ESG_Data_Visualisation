@@ -76,9 +76,10 @@ const columns= [
   {
     name: 'Shareclass Type',
     selector: row => row["Fund profile: Shareclass type"],
+    sortable: true,
   },
   {
-    name: 'Deforestation',
+    name: <Link to={'/deforestation'}>Deforestation</Link>,
     selector: row => row["Deforestation Free Funds: Deforestation grade"],
     conditionalCellstyles: [{
       when: row=> (row["Deforestation Free Funds: Deforestation grade"]) === "B",
@@ -89,27 +90,27 @@ const columns= [
     }],
   },
   {
-    name: 'Fossil',
+    name: <Link to={'/fossilfuels'}>Fossil Fuels</Link>,
     selector:row => row["Fossil Free Funds: Fossil fuel grade"],
   },
   {
-    name: 'Prison',
+    name: <Link to={'/prison'}>Prison</Link>,
     selector: row => row["Prison Free Funds: Prison industrial complex grade"],
   },
   {
-    name: 'Gender',
+    name: <Link to={'/gender'}>Gender</Link>,
     selector: row => row["Gender Equality Funds: Gender equality grade"],
   },
   {
-    name: 'Weapons',
+    name: <Link to={'/weapons'}>Weapons</Link>,
     selector: row => row["Weapon Free Funds: Military weapon grade"],
   },
   {
-    name: 'Guns',
+    name: <Link to={'/guns'}>Guns</Link>,
     selector: row => row["Gun Free Funds: Civilian firearm grade"],
   },
   {
-    name: 'Tobacco',
+    name: <Link to={'/tobacco'}>Tobacco</Link>,
     selector: row => row["Tobacco Free Funds: Tobacco grade"],
   },
    
