@@ -70,3 +70,35 @@
   align-items: center;
   
 }
+
+.card-text{
+  display: flex;
+  text-align: center;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
+  margin-bottom: 2px ;
+  
+  
+}
+
+
+.card-container{
+  width: 225px;
+}
+
+.card{
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+
+}
+
+.rating-text{
+  font-weight: bold;
+  padding: 2px;
+}
+
+.heading-text{
+  padding: 2px;
+ 
+}

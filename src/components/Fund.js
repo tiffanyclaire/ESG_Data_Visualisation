@@ -163,7 +163,7 @@ function Fund ({data}) {
 
           const guns = get_guns(indvFund)
           setgunHoldings( {
-            labels: ["Other", "Fossil Fuels"],
+            labels: ["Other", "Civilian Firearms"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: guns,
@@ -219,7 +219,7 @@ function Fund ({data}) {
 
           const weapons = get_weapons(indvFund)
           setweaponHoldings( {
-            labels: ["Other", "Tobacco Producer"],
+            labels: ["Other", "Military Weapons"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: weapons,
