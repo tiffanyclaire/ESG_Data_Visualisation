@@ -9,6 +9,7 @@ import { get_gender } from '../utils/getGender.js'
 import { get_prison } from '../utils/getPrison.js'
 import { get_tobacco } from '../utils/getTobacco.js'
 import { get_weapons } from '../utils/getWeapons.js'
+import { get_holdings } from '../utils/getHoldings.js'
 import ReportCard from '../components/ReportCard'
 import { Bar , Doughnut } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
@@ -29,10 +30,18 @@ function Fund ({data}) {
             anchor: "end",
           }
         }
-      };
+      }
+
+    
+    
 
     //Individual Fund
     const [indvFund, setindvFund] = useState([]);
+
+    const holdingData= get_holdings(indvFund);
+    console.log(holdingData, "holding data");
+    
+
     const [fundFirearms, setfundFirearms] = useState({
         labels: [],
         datasets:[{ 
@@ -41,6 +50,22 @@ function Fund ({data}) {
 
     }]
     });
+
+    const deforest = get_deforest(indvFund)
+    // Practice
+    const practice = {
+        labels: ["Other", "Deforestation"],
+        datasets: [{
+        label: "Percent of fund assets found on major weapon screen lists ",
+        data: deforest,
+        backgroundColor: [
+            'rgba(0, 0, 0, 0.1)',
+            'rgba(255, 118, 0, 0.6)'
+        ]
+        
+      }]
+  
+      }
 
     // Deforestation 
     const [forestHoldings, setforestHoldings] = useState({
@@ -111,6 +136,15 @@ function Fund ({data}) {
 
     }]
     });
+
+    // All Holdings
+    const allHoldings = {
+        labels: [],
+        datasets: [{
+            label: "label",
+            data: [],
+        }]
+    }
 
 
     useEffect(() => {
@@ -205,7 +239,7 @@ function Fund ({data}) {
 
           const prison = get_prison(indvFund)
           setprisonHoldings( {
-            labels: ["Other", "Prison Industry"],
+            labels: ["Other", "Prison Industry Holdings"],
             datasets: [{
             label: "Percent of fund assets found on major weapon screen lists ",
             data: prison,
@@ -252,6 +286,10 @@ function Fund ({data}) {
     console.log(forestHoldings, "deforest");
     console.log(fossilHoldings, "fossil");
     console.log(prisonHoldings, "prison");
+
+
+    
+
 
     
 
@@ -317,6 +355,11 @@ function Fund ({data}) {
             <div style= {{width:'30%'}}>
                 <h3 className= "Heading">Tobacco</h3>
                 <Doughnut data={tobaccoHoldings} />
+            </div>
+
+            <div style= {{width:'30%'}}>
+                <h3 className= "Heading">PRACTICE</h3>
+                <Doughnut data={practice} />
             </div>
         </div>
 

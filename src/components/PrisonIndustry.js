@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { comparePrison } from '../utils/comparePrison.js'
-import { compareBorder } from '../utils/compareBorder.js'
-import { comparePrivatePrisons } from '../utils/comparePrivatePrisons.js'
-import { chart } from 'chart.js'
+import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 
 
-function PrisonIndustry ({data}) {
+function PrisonIndustry ({data, names}) {
 
     const options = {
         plugins:{
@@ -25,104 +22,54 @@ function PrisonIndustry ({data}) {
         }
       };
 
-    const [prisonAll, setprisonAll] = useState({
-        labels: [],
-        datasets:[{ 
-        label: "Prison Free Funds: All flagged, weight",
-        data: [],
+   
+    
+    // getting three datasets
+    const prison1 = get_weight(data, "Prison Free Funds: Prison industry, weight"); 
+    const prison2= get_weight(data, "Prison Free Funds: Private prison operators, weight");
+    const prison3 = get_weight(data, "Prison Free Funds: Border industry, weight");
 
-    }]
-    });
+    
+    const prisonComparison = {
+        labels: names,
+        datasets: [{
+        label: "Prison Industry",
+        data: prison1,
+        backgroundColor: [
+            'rgba(29, 0, 255, 0.7)'
+        ]
+        
+      },
+      {
+        label: "Private Prison Operators",
+        data: prison2,
+        backgroundColor: [
+            'rgba(106, 0, 255, 0.7)'
+        ]
+        
+      },
+      {
+        label: "Border Industry",
+        data: prison3,
+        backgroundColor: [
+            'rgba(194, 0, 255, 0.7)'
+        ]
+        
+      }
+        ]
+      }
 
-    const [prisonBorder, setprisonBorder] = useState({
-        labels: [],
-        datasets:[{ 
-        label: "Prison Free Funds: All flagged, weight",
-        data: [],
-
-    }]
-    });
-
-    const [privatePrisons, setprivatePrisons] = useState({
-        labels: [],
-        datasets:[{ 
-        label: "Prison Free Funds: All flagged, weight",
-        data: [],
-
-    }]
-    });
-
-
-    useEffect(() =>{
-        const prison = comparePrison(data);
-        setprisonAll( {
-            labels: prison.labels,
-            datasets: [{
-            label: "All flagged, weight",
-            data: prison.data,
-          }]
-      
-          })
-
-
-    }, [data])
-
-    useEffect(() =>{
-        const prison = compareBorder(data);
-        setprisonBorder( {
-            labels: prison.labels,
-            datasets: [{
-            label: "Border industry, weight",
-            data: prison.data,
-          }]
-      
-          })
-
-
-    }, [data])
-
-    useEffect(() =>{
-        const prison = comparePrivatePrisons(data);
-        setprivatePrisons( {
-            labels: prison.labels,
-            datasets: [{
-            label: "Private prison operators, weight",
-            data: prison.data,
-          }]
-      
-          })
-
-
-    }, [data])
-
+   
     return (
         <div style= {{width:'90%', padding: '5%'}}>
-            <div className= "containerLarge">
-                <h3 className= "Heading">Prison Industrial Complex</h3>
-                <h5 className= "Sub-heading">Funds are screened for investments in companies with involvement in the prison industrial complex.</h5>
-                <div className="barChart">
-                    <Bar data= {prisonAll} plugins={[ChartDataLabels]} options={options}/>
-                </div> 
-            </div>  
-
-
-            <div className= "containerLarge">
-                <h3 className= "Heading">Border</h3>
-                <h5 className= "Sub-heading">Funds are screened for investments in companies with involvement in the prison industrial complex.</h5>
-                <div className="barChart">
-                    <Bar data= {prisonBorder} plugins={[ChartDataLabels]} options={options} />
-                </div> 
-            </div> 
 
             <div className= "containerLarge">    
-                <h3 className= "Heading">Private Prison Operators</h3>
+                <h3 className= "Heading">Prison</h3>
                 <h5 className= "Sub-heading">Funds are screened for investments in companies with involvement in the prison industrial complex.</h5>
                 <div className="barChart">
-                    <Bar data= {privatePrisons} plugins={[ChartDataLabels]} options={options} />
+                    <Bar data= {prisonComparison} plugins={[ChartDataLabels]} options={options} />
                 </div>  
             </div> 
-            
-          
         </div>
 
 

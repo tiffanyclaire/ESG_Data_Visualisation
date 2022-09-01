@@ -1,11 +1,9 @@
 import React, { useState, useEffect} from 'react';
-import {  compareDeforestConsumer } from '../utils/compareDeforestConsumer.js'
-import {  compareDeforestProducer } from '../utils/compareDeforestProducer.js'
-import {  compareDeforestFinancier } from '../utils/compareDeforestFinancier.js'
+import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 
-function Deforestation ({data}) {
+function Deforestation ({data, names}) {
 
     const options = {
         plugins:{
@@ -22,106 +20,52 @@ function Deforestation ({data}) {
         }
       };
 
-    const [deforestConsumer , setdeforestConsumer] = useState({
-        labels: [],
-        datasets:[{ 
-        label: "sdrfgsagras",
-        data: [],
 
-    }]
-    });
+    // getting three datasets
+    const prison1 = get_weight(data, "Deforestation Free Funds: Deforestation-risk consumer brand, weight"); 
+    const prison2= get_weight(data, "Deforestation Free Funds: Deforestation-risk producer, weight");
+    const prison3 = get_weight(data, "Deforestation Free Funds: Deforestation-risk financier, weight");
 
-    const [deforestProducer , setdeforestProducer] = useState({
-        labels: [],
-        datasets:[{ 
-        label: "sdrfgsagras",
-        data: [],
-
-    }]
-    });
-
-    const [deforestFinancier , setdeforestFinancier] = useState({
-        labels: [],
-        datasets:[{ 
-        label: "sdrfgsagras",
-        data: [],
-
-    }]
-    });
-
-
-
-
-    useEffect(() =>{
-        const deforest = compareDeforestConsumer(data);
-        setdeforestConsumer( {
-            labels: deforest.labels,
-            datasets: [{
-            label: "Deforestation-risk producer, weight",
-            data: deforest.data,
-          }]
-      
-          })
-          
-
-    }, [data])
-
-
-    useEffect(() =>{
-        const deforest = compareDeforestProducer(data);
-        setdeforestProducer( {
-            labels: deforest.labels,
-            datasets: [{
-            label: "Deforestation-risk producer, weight",
-            data: deforest.data,
-          }]
-      
-          })
-          
-
-    }, [data])
-
-
-    useEffect(() =>{
-        const deforest = compareDeforestFinancier(data);
-        setdeforestFinancier( {
-            labels: deforest.labels,
-            datasets: [{
-            label: "Deforestation-risk financier, weight",
-            data: deforest.data,
-          }]
-      
-          })
-          
-
-    }, [data])
-
-    console.log(deforestProducer, "PRODUCER");
-   
+    
+    const deforestationComparison = {
+        labels: names,
+        datasets: [{
+        label: "COnsumer",
+        data: prison1,
+        backgroundColor: [
+            'rgba(29, 0, 255, 0.7)'
+        ]
+        
+      },
+      {
+        label: "Producer",
+        data: prison2,
+        backgroundColor: [
+            'rgba(106, 0, 255, 0.7)'
+        ]
+        
+      },
+      {
+        label: "Financier",
+        data: prison3,
+        backgroundColor: [
+            'rgba(194, 0, 255, 0.7)'
+        ]
+        
+      }
+        ]
+      }
 
 
     return (
         <div style= {{width:'90%', padding: '5%'}}>
-            <div className= "containerLarge">  
-                <h3 className= "Heading">Major Consumer Brand</h3> 
-                <div className="barChart">
-                    <Bar data= {deforestConsumer} plugins={[ChartDataLabels]} options={options}/>
-                </div> 
-            </div>
 
-            <div className= "containerLarge">  
-                <h3 className= "Heading">Producer</h3> 
-                <div className="barChart">
-                    <Bar data= {deforestProducer} plugins={[ChartDataLabels]} options={options}/>
-                </div> 
-            </div>
-
-            <div className= "containerLarge">  
-                <h3 className= "Heading">Financier</h3> 
-                <div className="barChart">
-                    <Bar data= {deforestFinancier} plugins={[ChartDataLabels]} options={options}/>
-                </div> 
-            </div>
+                <div className= "containerLarge">  
+                    <h3 className= "Heading">Deforestation</h3> 
+                    <div className="barChart">
+                        <Bar data= {deforestationComparison} plugins={[ChartDataLabels]} options={options}/>
+                    </div> 
+                </div>
         </div>
 
 

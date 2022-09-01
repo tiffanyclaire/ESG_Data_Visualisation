@@ -1,18 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {  compareTobacco } from '../utils/compareTobacco.js'
+import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { get_weight } from '../utils/getWeight.js'
 
-function Tobacco ({data}) {
+function Tobacco ({data, names}) {
 
-    const [tobacco , settobacco] = useState({
-        labels: [],
-        datasets:[{ 
-        label: "sdrfgsagras",
-        data: [],
-
-    }]
-    });
 
     const options = {
         plugins:{
@@ -30,33 +22,40 @@ function Tobacco ({data}) {
       };
 
 
+      // getting three datasets
+    const prison1 = get_weight(data, "Tobacco Free Funds: Tobacco producer, weight"); 
+    const prison2= get_weight(data, "Tobacco Free Funds: Tobacco-promoting entertainment company, weight");
 
-
-    useEffect(() =>{
+    
+    const tobaccoComparison = {
+        labels: names,
+        datasets: [{
+        label: "Producer",
+        data: prison1,
+        backgroundColor: [
+            'rgba(29, 0, 255, 0.7)'
+        ]
         
-        const deforest = compareTobacco(data);
-        settobacco( {
-            labels: deforest.labels,
-            datasets: [{
-            label: "Tobacco producer, weight",
-            data: deforest.data,
-          }]
-      
-          })
-          
+      },
+      {
+        label: "Promotion",
+        data: prison2,
+        backgroundColor: [
+            'rgba(106, 0, 255, 0.7)'
+        ]
+        
+      }
+        ]
+      }
 
-    }, [data])
-
-
-   
 
 
     return (
         <div style= {{width:'90%', padding: '5%'}}>
             <div className= "containerLarge">  
-                <h3 className= "Heading">Tobacco Producer Weight</h3> 
+                <h3 className= "Heading">Tobacco</h3> 
                 <div className="barChart">
-                    <Bar data= {tobacco} plugins={[ChartDataLabels]} options={options}/>
+                    <Bar data= {tobaccoComparison} plugins={[ChartDataLabels]} options={options}/>
                 </div>
             </div>
         </div>
