@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useCallback } from 'react';
 import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
