@@ -12,9 +12,6 @@ import GenderEquality from './components/GenderEquality'
 import Deforestation from './components/Deforestation'
 import Tobacco from './components/Tobacco'
 import Weapons from './components/Weapons'
-import { parse_CSV } from './utils/parseCSV'
-import HorizontalChart from './components/GenderEquality'
-import { csv } from 'd3';
 import Papa from 'papaparse';
 import csvData from './investValues.csv';
 import { get_allfunds } from './utils/getAllFunds.js'
@@ -24,32 +21,29 @@ import { get_allfunds } from './utils/getAllFunds.js'
 
 function App() {
 
-//  var parsedData = csv(csvData).then(data => {
-//   console.log(data);
-//   return data;
-// })
-
-// const parsedData;
-// csv(csvData, function(data){
-//   parsedData.push(data);
-
-// })
+  const [parsedData, setparsedData] = useState([]);
 
 
-// let parsedData= {};
-// csv(csvData, function(data) 
-// { console.log(data); parsedData.push(data)});
+ useEffect(() => {
 
-// console.log(parsedData, "CHECKING ")
+  const parseFile = () =>{
+    Papa.parse(csvData, {
+      download: true,
+      header: true, 
+      skipEmptyLines: true,
+      complete: function(esgData){
+        setparsedData(esgData.data);
+        
+      }
+    });
+  } 
 
+  parseFile();
 
-const temp = parse_CSV();
+ }, []);   
+  
+ console.log("Parsed Data", parsedData); 
 
-const parsedData = temp;
-
-console.log(parsedData)
-
-console.log(parsedData[1])
 
 
 
@@ -65,30 +59,6 @@ console.log(parsedData[1])
  // List of fund names 
  const fund_names = get_allfunds(parsedData);
  
-  
-
- 
-  // Prison category data
-  const [practiceData, setpracticeData] = useState({
-    labels: [],
-    datasets:[{ 
-      label: "Prison Free Funds: All flagged, weight",
-      data: [],
-
-    }]
-
-  })
-
-  // Gender category data
-  const [practiceData2, setpracticeData2] = useState({
-    labels: [],
-    datasets:[{ 
-      label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
-      data: [],
-
-    }]
-
-  })
 
 
   // Options for Horizontal Chart
@@ -154,149 +124,6 @@ const columns= [
   },
    
 ];
-
-
-
-//Storing csv data//
-
-
-// PARSEDDATA.MAP RESULTS IN PRINTING EACH OBJECT INDIVIDUALLY// 
-
-
-  //const [userData, setUserData] = useState({
-    //labels: UserData.map((data) => data.year),
-    //datasets: [{
-      //label: "number of users gained",
-     // data: UserData.map((data) => data.userGain),
-    //}]
-  //})
-
- 
-  
-  
-
-  // useEffect(() => {
-    
-   
-    // const parseFile = () =>{
-    //   Papa.parse(csvData, {
-    //     download: true,
-    //     header: true, 
-    //     skipEmptyLines: true,
-    //     complete: function(esgData){
-    //       setParsedData(esgData.data);
-    //       console.log("Parsed Data", parsedData); 
-    //     }
-    //   });
-    // }
-
-    // parseFile();
-    
-    //Parse CSV file and store data
-
-    
-    
-    // async function getData() {
-    //   csv(csvData).then(data => {
-    //        console.log(data);
-    //        setParsedData(data);
-    //      })
-
-    // }
-
-  // /  getData();
-
-
-    // for (let i=0; i< parsedData.length; i++){
-  
-    //   a.push(parsedData[i]["Fund profile: Shareclass name"]);
-    //   b.push(parseFloat(parsedData[i]["Prison Free Funds: All flagged, weight"]));
-    //   c.push(parsedData[i]["Fund profile: Shareclass name"]);
-    //   d.push(parseFloat(parsedData[i]["Gender Equality Funds: Weight of holdings with Equileap gender equality scores"]));
-    
-    // }
-  
-
-    // for (let i=0; i< parsedData.length; i++){
-  
-    //   c.push(parsedData[i]["Fund profile: Shareclass name"]);
-    //   d.push(parseFloat(parsedData[i]["Gender Equality Funds: Weight of holdings with Equileap gender equality scores"]));
-      
-     
-
-    // }
-
-  //   setpracticeData( {
-  //     labels: a,
-  //     datasets: [{
-  //     label: "Prison Free Funds: All flagged, weight",
-  //     data: b,
-  //   }]
-
-  //   })
-
-  //   setpracticeData2( {
-  //     labels: c,
-  //     datasets: [{
-  //     label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
-  //     data: d,
-  //   }]
-
-  //   })
-
-
-  // // Get fund data by name and store data
-  // const new_fund = get_fund("1919 Socially Responsive Balanced A", parsedData)
-  // setindvFund(new_fund);
-  // console.log(new_fund, "indvfund");
-  // console.log(parsedData);
-
-    
-//  }, []);
-
-  
-//  useEffect(() => {
-
-//     const a = [];
-//     const b = [];
-    
-//     const c = [];
-//     const d = [];
-
-//    for (let i=0; i< parsedData.length; i++){
-  
-//       a.push(parsedData[i]["Fund profile: Shareclass name"]);
-//       b.push(parseFloat(parsedData[i]["Prison Free Funds: All flagged, weight"]));
-//       c.push(parsedData[i]["Fund profile: Shareclass name"]);
-//       d.push(parseFloat(parsedData[i]["Gender Equality Funds: Weight of holdings with Equileap gender equality scores"]));
-    
-//     }
-
-
-
-//       setpracticeData( {
-//       labels: a,
-//       datasets: [{
-//       label: "Prison Free Funds: All flagged, weight",
-//       data: b,
-//     }]
-
-//     })
-
-//     setpracticeData2( {
-//           labels: c,
-//           datasets: [{
-//           label: "Gender Equality Funds: Weight of holdings with Equileap gender equality scores",
-//           data: d,
-//         }]
-    
-//         })
-
-
-    
-  
-
-//   }, [parsedData]);
 
 
 

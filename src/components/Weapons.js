@@ -3,7 +3,7 @@ import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 
-function Deforestation ({data, names}) {
+function Weapons ({data, names}) {
 
     const options = {
         plugins:{
@@ -85,4 +85,4 @@ function Deforestation ({data, names}) {
 
 
 }
-export default Deforestation
+export default Weapons

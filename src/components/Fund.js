@@ -33,6 +33,8 @@ function Fund ({data}) {
       }
 
     
+
+    
     
 
     //Individual Fund
@@ -40,6 +42,9 @@ function Fund ({data}) {
 
     const holdingData= get_holdings(indvFund);
     console.log(holdingData, "holding data");
+
+    const netAssets =  (indvFund["Fund profile: Fund net assets"])
+    console.log(netAssets, "NET ASSETS")
     
 
     const [fundFirearms, setfundFirearms] = useState({
