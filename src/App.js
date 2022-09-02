@@ -174,7 +174,7 @@ const columns= [
                 <h2>Gender Equality</h2>
 
                 <div>
-                  <GenderEquality data={parsedData}/> 
+                  <GenderEquality data={parsedData} names= {fund_names}/> 
                 </div>
                 
 

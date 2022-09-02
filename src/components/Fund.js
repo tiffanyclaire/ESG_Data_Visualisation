@@ -39,7 +39,7 @@ function Fund ({data}) {
       const tobaccoAssets = get_asset(indvFund, netAssets, "Tobacco Free Funds: Tobacco producer, asset");
 
       const genderOverall = gender_score(indvFund, "Gender Equality Funds: Gender equality score - Overall score (out of 100 points)", 100);
-
+ 
 
       
 
@@ -134,11 +134,6 @@ function Fund ({data}) {
       }]
       };
 
-      
-
-
-
-
     // All Holdings
     const allHoldings = {
         labels: [],
@@ -167,8 +162,9 @@ function Fund ({data}) {
                 <h3 className= "Heading">Gender Equality</h3>
                 <Doughnut data={gender} />
             </div>
-
         </div>
+
+        
 
     
         <div className= "chartContainer">
@@ -176,17 +172,17 @@ function Fund ({data}) {
 
             <div style= {{width:'30%'}}>
                 <h3 className= "Heading">Deforestation</h3>
-                <Pie data={deforestation} />
+                <Doughnut data={deforestation} />
             </div>
 
             <div style= {{width:'30%'}}>
                 <h3 className= "Heading">Fossil Fuels</h3> 
-                <Pie data={fossilFuels} />  
+                <Doughnut data={fossilFuels} />  
             </div>
 
             <div style= {{width:'30%'}}>
                 <h3 className= "Heading">Prison Industrial Complex</h3>
-                <Pie data={prisonIndustry} />  
+                <Doughnut data={prisonIndustry} />  
             </div>
         </div>
         
@@ -195,17 +191,17 @@ function Fund ({data}) {
 
             <div style= {{width:'30%'}}>
                 <h3 className= "Heading">Military Weapons</h3> 
-                <Pie data={weapons} /> 
+                <Doughnut data={weapons} /> 
             </div>
 
             <div style= {{width:'30%'}}>
                 <h3 className= "Heading">Guns</h3>
-                <Pie data={guns} />
+                <Doughnut data={guns} />
             </div>
 
             <div style= {{width:'25%'}}>
                 <h3 className= "Heading">Tobacco</h3>
-                <Pie data={tobacco} />
+                <Doughnut data={tobacco} />
             </div>
 
         
