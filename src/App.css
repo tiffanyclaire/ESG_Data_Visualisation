@@ -81,12 +81,6 @@
   
 }
 
-.card-title{
-
-}
-.card-container{
-  
-}
 
 .card{
   padding: 20px;
@@ -100,4 +94,8 @@
 .rating-text{
   font-weight: bold;
   margin: 10px;
+}
+
+.cardRow{
+  margin-top: 10px;
 }

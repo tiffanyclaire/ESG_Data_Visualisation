@@ -14,6 +14,7 @@ import Tobacco from './components/Tobacco'
 import Weapons from './components/Weapons'
 import Papa from 'papaparse';
 import csvData from './investValues.csv';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { get_allfunds } from './utils/getAllFunds.js'
 //Chart.register(ChartDataLabels);
 

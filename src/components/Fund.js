@@ -3,8 +3,12 @@ import  {get_fund } from '../utils/getFund.js'
 import { get_asset } from '../utils/getAsset.js'
 import { gender_score } from '../utils/genderScore.js'
 import ReportCard from '../components/ReportCard'
-import { Pie , Doughnut } from 'react-chartjs-2'
+import { Doughnut } from 'react-chartjs-2'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+
 
 
 
@@ -146,24 +150,42 @@ function Fund ({data}) {
    
 
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
 
-        {/* <h2 className= "Heading"> {indvFund["Fund profile: Shareclass name"]}</h2> */}
-        <h2 className= "Heading">Shareclass Type: { indvFund["Fund profile: Shareclass name"]} </h2>
-        <h3 className= "Sub-heading">Fund ID: { id } </h3>
-        <h3 className= "Sub-heading">Shareclass Type: { indvFund["Fund profile: Shareclass type"]} </h3>
-        <h5 className= "Sub-heading">This pension fund is invested in at least 1200 companies</h5>
-        <h5 className= "Sub-heading">This data was collected between 1tst August 2022 and 31st August 2022 </h5>
+        <Container>
+        
 
-        <ReportCard data={indvFund}/>
+        <Container>
+        <Row >
+        <Col  lg={8}>
+
+     
+            <h2 className= "Heading">{ indvFund["Fund profile: Shareclass name"]} </h2>
+            <h3 className= "Sub-heading">Asset Manager: { indvFund["Fund profile: Asset manager"] } </h3>
+            <h3 className= "Sub-heading">Ticker: { indvFund["Fund profile: Ticker"] } </h3>
+            <h3 className= "Sub-heading">Shareclass Type: { indvFund["Fund profile: Shareclass type"]} </h3>
+            <h5 className= "Sub-heading">This pension fund is invested in at least 1200 companies</h5>
+            <h5 className= "Sub-heading">This data was collected between 1tst August 2022 and 31st August 2022 </h5>
+
+        </Col> 
+
+        <Col lg={4}>
+            <ReportCard data={indvFund}/>
+        </Col>
+
+            
+            </Row>
+
+    
+        </Container>
+
+        <Container>
 
         <div className= "chartContainer">
-            <div style= {{width:'30%'}}>
-                <h3 className= "Heading">Gender Equality</h3>
-                <Doughnut data={gender} />
+                <div style= {{width:'30%'}}>
+                    <h3 className= "Heading">Gender Equality</h3>
+                    <Doughnut data={gender} />
+                </div>
             </div>
-        </div>
-
         
 
     
@@ -212,14 +234,16 @@ function Fund ({data}) {
             
         </div>
 
+        </Container> 
 
+
+        
+
+
+
+        
+        </Container>
     
-
-        
-        
-
-        </div>
-        
     );
 }
 
