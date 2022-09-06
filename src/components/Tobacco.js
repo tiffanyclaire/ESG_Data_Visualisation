@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import { get_weight } from '../utils/getWeight.js'
+import Layout from './Layout.js';
 
 function Tobacco ({data, names}) {
 
@@ -51,14 +52,16 @@ function Tobacco ({data, names}) {
 
 
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
-            <div className= "containerLarge">  
+
+      <Layout>
+          
                 <h3 className= "Heading">Tobacco</h3> 
                 <div className="barChart">
                     <Bar data= {tobaccoComparison} plugins={[ChartDataLabels]} options={options}/>
                 </div>
-            </div>
-        </div>
+
+      </Layout>
+        
 
 
     );

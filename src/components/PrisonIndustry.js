@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import Layout from './Layout.js';
 
 
 
@@ -61,16 +62,18 @@ function PrisonIndustry ({data, names}) {
 
    
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
+        <Layout>
 
-            <div className= "containerLarge">    
+            
                 <h3 className= "Heading">Prison</h3>
                 <h5 className= "Sub-heading">Funds are screened for investments in companies with involvement in the prison industrial complex.</h5>
                 <div className="barChart">
                     <Bar data= {prisonComparison} plugins={[ChartDataLabels]} options={options} />
                 </div>  
-            </div> 
-        </div>
+           
+
+          </Layout>
+       
 
 
     );

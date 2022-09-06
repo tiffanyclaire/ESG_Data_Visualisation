@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import Layout from './Layout.js';
 
 function Deforestation ({data, names}) {
 
@@ -30,7 +31,7 @@ function Deforestation ({data, names}) {
     const deforestationComparison = {
         labels: names,
         datasets: [{
-        label: "COnsumer",
+        label: "Consumer",
         data: prison1,
         backgroundColor: [
             'rgba(29, 0, 255, 0.7)'
@@ -58,15 +59,15 @@ function Deforestation ({data, names}) {
 
 
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
 
-                <div className= "containerLarge">  
+      <Layout>
+ 
                     <h3 className= "Heading">Deforestation</h3> 
                     <div className="barChart">
                         <Bar data= {deforestationComparison} plugins={[ChartDataLabels]} options={options}/>
                     </div> 
-                </div>
-        </div>
+            
+        </Layout>
 
 
     );

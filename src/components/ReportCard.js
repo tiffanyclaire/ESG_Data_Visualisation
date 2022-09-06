@@ -20,7 +20,7 @@ function ReportCard ({data}) {
 
 
         <Table>
-            <tbody>
+            <tbody className='text-start'>
                 <tr>
                 <td>Gender</td>
                 <td>{data["Gender Equality Funds: Gender equality grade"]}</td>
@@ -46,7 +46,7 @@ function ReportCard ({data}) {
                 <td>{data["Gun Free Funds: Civilian firearm grade"]}</td>
                 </tr>
                 <tr>
-                <td style={{justifyContent: 'left'}}>Tobacco</td>
+                <td >Tobacco</td>
                 <td >{data["Tobacco Free Funds: Tobacco grade"]}</td>
                 </tr>
             </tbody>

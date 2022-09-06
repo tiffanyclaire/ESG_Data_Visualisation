@@ -3,6 +3,7 @@ import { Bar, Doughnut, Pie } from 'react-chartjs-2'
 import { gender_scoremultiple } from '../utils/genderScoreMultiple.js'
 import { get_weight } from '../utils/getWeight.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import Layout from './Layout.js';
 
 function GenderEquality ({data, names}) {
 
@@ -90,8 +91,7 @@ function GenderEquality ({data, names}) {
     };
 
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
-            <div className= "containerLarge">  
+        <Layout> 
                 <h3 className= "Heading">Overall Gender Equality Scores</h3> 
                 <div className="barChart">
                     <Bar data= {genderComparison} plugins={[ChartDataLabels]} options={options}/>
@@ -124,11 +124,7 @@ function GenderEquality ({data, names}) {
                     <Bar data={genderTransparency} plugins={[ChartDataLabels]} options={options}/>
                   </div>
                 </div>
-
-
-                
-            </div>
-        </div>
+          </Layout>
 
 
     );

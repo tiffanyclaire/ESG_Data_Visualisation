@@ -1,6 +1,7 @@
 import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import Layout from './Layout.js';
 
 function Weapons ({data, names}) {
 
@@ -69,15 +70,16 @@ function Weapons ({data, names}) {
 
 
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
+        
+      <Layout>
 
-            <div className= "containerLarge">  
                 <h3 className= "Heading">Weapons</h3> 
                 <div className="barChart">
                     <Bar data= {weaponsComparison} plugins={[ChartDataLabels]} options={options}/>
                 </div>
-            </div>
-        </div>
+          
+      </Layout>
+       
 
 
     );

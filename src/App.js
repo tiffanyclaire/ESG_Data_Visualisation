@@ -17,9 +17,32 @@ import csvData from './investValues.csv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { get_allfunds } from './utils/getAllFunds.js'
 import Container from 'react-bootstrap/Container';
+import Layout from './components/Layout';
 //Chart.register(ChartDataLabels);
 
 
+// import {
+//   Chart as ChartJS,
+//   CategoryScale,
+//   LinearScale,
+//   PointElement,
+//   LineElement,
+//   Title,
+//   Tooltip,
+//   Legend,
+//   Filler,
+// } from 'chart.js';
+
+// ChartJS.register(
+//   CategoryScale,
+//   LinearScale,
+//   PointElement,
+//   LineElement,
+//   Title,
+//   Tooltip,
+//   Legend,
+//   Filler
+// );
 
 function App() {
 
@@ -75,7 +98,7 @@ const columns= [
   {
     name: 'Asset Name',
     selector: row => row["Fund profile: Shareclass name"],
-    width: "18%",
+    width: "20%",
     cell: (row) =>  (
       <Link to={'/fund/'+ row["id"]}>{row["Fund profile: Shareclass name"]}</Link>
     )
@@ -87,6 +110,7 @@ const columns= [
   {
     name: 'Shareclass Type',
     selector: row => row["Fund profile: Shareclass type"],
+    width: "15%",
     sortable: true,
   },
   {
@@ -137,14 +161,13 @@ const columns= [
         <div className="content">
           <Routes>
             <Route path="/" element={
-              <Container>
+              <Layout>
                 <h2 className= "Heading" >Overview of where my money is invested</h2>
                 <h5 className= "Sub-heading">Your account is broken into different financial assests. You have 6 funds.</h5>
 
-                <div style= {{width:'90%'}}> 
                   <BasicTable columns={columns} data={parsedData} />
-                </div>
-                </Container>
+              </Layout>
+                
             } />
 
 

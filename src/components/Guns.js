@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import Layout from './Layout.js';
 
 function Guns ({data, names}) {
 
@@ -19,6 +20,7 @@ function Guns ({data, names}) {
           }
         }
       };
+
 
       // getting three datasets
     const prison1 = get_weight(data, "Gun Free Funds: Civilian firearm, weight"); 
@@ -57,96 +59,20 @@ function Guns ({data, names}) {
 
 
 
-
-
-
-
-    // const [civilianFirearms, setcivilianFirearms] = useState({
-    //     labels: [],
-    //     datasets:[{ 
-    //     label: "Prison Free Funds: All flagged, weight",
-    //     data: [],
-
-    // }]
-    // });
-
-    // const [gunManufacturer, setgunManufacturer] = useState({
-    //     labels: [],
-    //     datasets:[{ 
-    //     label: "Prison Free Funds: All flagged, weight",
-    //     data: [],
-
-    // }]
-    // });
-
-    // const [gunRetailer, setgunRetailer] = useState({
-    //     labels: [],
-    //     datasets:[{ 
-    //     label: "Prison Free Funds: All flagged, weight",
-    //     data: [],
-
-    // }]
-    // });
-
-
-
-
-    // useEffect(() =>{
-    //     const firearms = compareCivilian(data);
-    //     setcivilianFirearms( {
-    //         labels: firearms.labels,
-    //         datasets: [{
-    //         label: "Civilian firearm, weight",
-    //         data: firearms.data,
-    //       }]
-      
-    //       })
-       
-
-    // }, [data])
-    // console.log(civilianFirearms);
-
-    // useEffect(() =>{
-    //     const firearms = compareManufacturer(data);
-    //     setgunManufacturer( {
-    //         labels: firearms.labels,
-    //         datasets: [{
-    //         label: "Gun manufacturer, weight",
-    //         data: firearms.data,
-    //       }]
-      
-    //       })
-       
-
-    // }, [data])
-
-    // useEffect(() =>{
-    //     const firearms = compareRetailer(data);
-    //     setgunRetailer( {
-    //         labels: firearms.labels,
-    //         datasets: [{
-    //         label: "Gun retailer, weight",
-    //         data: firearms.data,
-    //       }]
-      
-    //       })
-       
-
-    // }, [data])
-    
-
-
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
+      <Layout>
 
-            <div className= "containerLarge">  
                 <h3 className= "Heading">Guns</h3> 
                 <div className="barChart">
                     <Bar data= {gunsComparison} plugins={[ChartDataLabels]} options={options}/>
                 </div> 
-            </div>
 
-        </div>
+      </Layout>
+          
+
+
+
+        
 
 
     );

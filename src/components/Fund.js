@@ -13,21 +13,34 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 
 
-
 function Fund ({data}) {
     const { id } = useParams();
 
     const options = {
         plugins:{
+            tooltip: {
+                callbacks: {
+                    label: function(item, everything) {
+                        const value = item.formattedValue
+                        return value + '%'
+                    }
+                }
+            },
+        
           dataLabels: {
             display: true,
             color: 'black',
             align: "end",
             anchor: "end",
-          }
-        }
-      }
+          },
 
+        },
+        
+        
+
+    }
+
+    // tooltipItem.dataset.Index
       const indvFund = get_fund(id, data);
 
       const netAssets =  indvFund["Fund profile: Fund net assets"];
@@ -61,7 +74,7 @@ function Fund ({data}) {
       };
 
       const deforestation = {
-        labels: ["Other", "Consumer Brand Holdings"],
+        labels: ["Other", "Agricultural commodity producers Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: deforestAssets,
@@ -74,7 +87,7 @@ function Fund ({data}) {
       };
 
       const fossilFuels = {
-        labels: ["Other", "Prison Industry Holdings"],
+        labels: ["Other", "Fossil Fuel Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: fossilAssets,
@@ -151,20 +164,20 @@ function Fund ({data}) {
 
     return (
 
-        <Container>
+        <Container className= 'mb-5'>
         
 
-        <Container>
+        <Container className='mb-5'>
         <Row className='mt-5'>
         <Col  lg={8} className='text-start'>
 
-            <h2 >{ indvFund["Fund profile: Shareclass name"]} </h2>
+            <h2 className="fw-bold">{ indvFund["Fund profile: Shareclass name"]} </h2>
             <h4 >{ indvFund["Fund profile: Shareclass type"]} </h4>
             
          
             
             <Row className='mt-5'>
-                <Col md={3}>
+                <Col md={4}>
                     <p className="fw-bold" >Asset Manager:</p>
                     <p className= "text-start">{ indvFund["Fund profile: Asset manager"] } </p>
                 </Col>
@@ -198,18 +211,27 @@ function Fund ({data}) {
     
         </Container>
 
-        <Container>
+        <Container className='mb-5'>
 
-        <Row className='mt-5'>
+        <Row>
                 <Col md={3} className='text-start'>
-                    <h5 >Gender Equality</h5>
+                    <h5 ></h5>
                     <Doughnut data={gender} />
+                </Col>
+
+                <Col md={7} className='text-start' >
+                <h4 className='mb-3'>Equileap Gender Equality Score</h4>
+                <p>These insights are provided by Equileap; a leading provider of gender equality data and insights.  </p>
+                <p>This is a market-value weighted average of the individual company scores of the fund's holdings on Equileap's 100-point scale.   In other words Company-level Equileap scores are averaged and weighted by the amount the fund invests in these companies.   </p>
                 </Col>
         </Row>
 
-        <Row className='mt-5'>
+        </Container>
+
+        <Container className='mb-5'>
+        <Row className='mb-3'>
             <Col md={8} className='text-start' >
-                <h4 >Fund Holdings Breakdown</h4>
+                <h4 className='mb-3'>Fund Holdings Breakdown</h4>
                 <h6 >This fund has been screened for direct stock holdings in each of the ESG categories.</h6>
                 <p >Discover below the percentage of the fund's assets which are invested the factors you care about. </p>
             </Col>
@@ -217,22 +239,22 @@ function Fund ({data}) {
         
 
     
-        <Row className='mt-5'>
+        <Row className='mt-5, mb-5'>
             
 
             <Col md={3} className='text-start' >
                 <h5 >Deforestation</h5>
-                <Doughnut data={deforestation} />
+                <Doughnut data={deforestation} options={options} />
             </Col>
 
             <Col md={3} className='text-start'>
                 <h5>Fossil Fuels</h5> 
-                <Doughnut data={fossilFuels} />  
+                <Doughnut data={fossilFuels} options={options} />  
             </Col>
 
             <Col md={3} className='text-start'>
                 <h5>Prison Industry</h5>
-                <Doughnut data={prisonIndustry} />  
+                <Doughnut data={prisonIndustry} options={options} />  
             </Col>
         </Row>
         
@@ -241,26 +263,22 @@ function Fund ({data}) {
 
             <Col md={3} className='text-start'>
                 <h5>Weapons</h5> 
-                <Doughnut data={weapons} /> 
+                <Doughnut data={weapons} options={options}/> 
             </Col>
 
             <Col md={3} className='text-start'>
                 <h5>Guns</h5>
-                <Doughnut data={guns} />
+                <Doughnut data={guns} options={options} />
             </Col>
 
             <Col md={3} className='text-start'>
                 <h5>Tobacco</h5>
-                <Doughnut data={tobacco} />
+                <Doughnut data={tobacco} options={options}/>
             </Col>
 
         
         </Row>
 
-        <div className= "chartContainer">
-
-            
-        </div>
 
         </Container> 
 

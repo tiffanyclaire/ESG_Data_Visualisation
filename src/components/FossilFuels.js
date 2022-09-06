@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import { get_weight } from '../utils/getWeight.js'
+import Layout from './Layout.js';
 
 function FossilFuels ({data, names}) {
 
@@ -58,16 +59,13 @@ function FossilFuels ({data, names}) {
 
 
     return (
-        <div style= {{width:'90%', padding: '5%'}}>
 
-            <div className= "containerLarge">  
+      <Layout>
                 <h3 className= "Heading">Fossil Fuels</h3> 
                 <div className= "barChart">
                     <Bar data= {fossilComparison} plugins={[ChartDataLabels]} options={options}/>
                 </div> 
-            </div>
-        </div>
-
+      </Layout>
 
     );
 
