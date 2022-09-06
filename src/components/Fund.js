@@ -35,7 +35,7 @@ function Fund ({data}) {
       
 
       const prisonAssets = get_asset(indvFund, netAssets, "Prison Free Funds: All flagged, asset" );
-      const deforestAssets = get_asset(indvFund, netAssets, "Deforestation Free Funds: Deforestation-risk consumer brand, asset");
+      const deforestAssets = get_asset(indvFund, netAssets, "Deforestation Free Funds: Deforestation-risk producer, asset");
       const fossilAssets = get_asset(indvFund, netAssets, "Fossil Free Funds: Fossil fuel holdings, asset");
       const weaponAssets = get_asset(indvFund, netAssets, "Weapon Free Funds: Military weapon, asset");
       const gunAssets = get_asset(indvFund, netAssets, "Gun Free Funds: Civilian firearm, asset");
@@ -48,7 +48,7 @@ function Fund ({data}) {
       
 
       const prisonIndustry = {
-        labels: ["Other", "Prison Industry Holdings"],
+        labels: ["Other", "Prison All Flagged Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: prisonAssets,
@@ -61,7 +61,7 @@ function Fund ({data}) {
       };
 
       const deforestation = {
-        labels: ["Other", "Prison Industry Holdings"],
+        labels: ["Other", "Consumer Brand Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: deforestAssets,
@@ -87,7 +87,7 @@ function Fund ({data}) {
       };
 
       const weapons = {
-        labels: ["Other", "Prison Industry Holdings"],
+        labels: ["Other", "Military Weapon Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: weaponAssets,
@@ -100,7 +100,7 @@ function Fund ({data}) {
       };
 
       const guns = {
-        labels: ["Other", "Prison Industry Holdings"],
+        labels: ["Other", "Civilian Firearm Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: gunAssets,
@@ -113,7 +113,7 @@ function Fund ({data}) {
       };
 
       const tobacco = {
-        labels: ["Other", "Prison Industry Holdings"],
+        labels: ["Other", "Tobacco Producer Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: tobaccoAssets,
@@ -155,16 +155,36 @@ function Fund ({data}) {
         
 
         <Container>
-        <Row >
-        <Col  lg={8}>
+        <Row className='mt-5'>
+        <Col  lg={8} className='text-start'>
 
-     
-            <h2 className= "Heading">{ indvFund["Fund profile: Shareclass name"]} </h2>
-            <h3 className= "Sub-heading">Asset Manager: { indvFund["Fund profile: Asset manager"] } </h3>
-            <h3 className= "Sub-heading">Ticker: { indvFund["Fund profile: Ticker"] } </h3>
-            <h3 className= "Sub-heading">Shareclass Type: { indvFund["Fund profile: Shareclass type"]} </h3>
-            <h5 className= "Sub-heading">This pension fund is invested in at least 1200 companies</h5>
-            <h5 className= "Sub-heading">This data was collected between 1tst August 2022 and 31st August 2022 </h5>
+            <h2 >{ indvFund["Fund profile: Shareclass name"]} </h2>
+            <h4 >{ indvFund["Fund profile: Shareclass type"]} </h4>
+            
+         
+            
+            <Row className='mt-5'>
+                <Col md={3}>
+                    <p className="fw-bold" >Asset Manager:</p>
+                    <p className= "text-start">{ indvFund["Fund profile: Asset manager"] } </p>
+                </Col>
+
+                <Col md={4}>
+                    <p className= "fw-bold" >Category Group:</p>
+                    <p className= "text-start"> { indvFund["Fund profile: Category group"]} </p>
+                </Col>
+
+                <Col md={4}>
+                    <p className= "fw-bold" >Ticker:</p>
+                    <p className= "text-start">{ indvFund["Fund profile: Ticker"] }  </p>
+                </Col>
+            </Row>
+
+            <Row className='mt-5'>
+            <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
+            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+
+            </Row>
 
         </Col> 
 
@@ -180,54 +200,62 @@ function Fund ({data}) {
 
         <Container>
 
-        <div className= "chartContainer">
-                <div style= {{width:'30%'}}>
-                    <h3 className= "Heading">Gender Equality</h3>
+        <Row className='mt-5'>
+                <Col md={3} className='text-start'>
+                    <h5 >Gender Equality</h5>
                     <Doughnut data={gender} />
-                </div>
-            </div>
+                </Col>
+        </Row>
+
+        <Row className='mt-5'>
+            <Col md={8} className='text-start' >
+                <h4 >Fund Holdings Breakdown</h4>
+                <h6 >This fund has been screened for direct stock holdings in each of the ESG categories.</h6>
+                <p >Discover below the percentage of the fund's assets which are invested the factors you care about. </p>
+            </Col>
+        </Row>
         
 
     
-        <div className= "chartContainer">
+        <Row className='mt-5'>
             
 
-            <div style= {{width:'30%'}}>
-                <h3 className= "Heading">Deforestation</h3>
+            <Col md={3} className='text-start' >
+                <h5 >Deforestation</h5>
                 <Doughnut data={deforestation} />
-            </div>
+            </Col>
 
-            <div style= {{width:'30%'}}>
-                <h3 className= "Heading">Fossil Fuels</h3> 
+            <Col md={3} className='text-start'>
+                <h5>Fossil Fuels</h5> 
                 <Doughnut data={fossilFuels} />  
-            </div>
+            </Col>
 
-            <div style= {{width:'30%'}}>
-                <h3 className= "Heading">Prison Industrial Complex</h3>
+            <Col md={3} className='text-start'>
+                <h5>Prison Industry</h5>
                 <Doughnut data={prisonIndustry} />  
-            </div>
-        </div>
+            </Col>
+        </Row>
         
-        <div className= "chartContainer">
+        <Row className='mt-5'>
             
 
-            <div style= {{width:'30%'}}>
-                <h3 className= "Heading">Military Weapons</h3> 
+            <Col md={3} className='text-start'>
+                <h5>Weapons</h5> 
                 <Doughnut data={weapons} /> 
-            </div>
+            </Col>
 
-            <div style= {{width:'30%'}}>
-                <h3 className= "Heading">Guns</h3>
+            <Col md={3} className='text-start'>
+                <h5>Guns</h5>
                 <Doughnut data={guns} />
-            </div>
+            </Col>
 
-            <div style= {{width:'25%'}}>
-                <h3 className= "Heading">Tobacco</h3>
+            <Col md={3} className='text-start'>
+                <h5>Tobacco</h5>
                 <Doughnut data={tobacco} />
-            </div>
+            </Col>
 
         
-        </div>
+        </Row>
 
         <div className= "chartContainer">
 

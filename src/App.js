@@ -16,6 +16,7 @@ import Papa from 'papaparse';
 import csvData from './investValues.csv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { get_allfunds } from './utils/getAllFunds.js'
+import Container from 'react-bootstrap/Container';
 //Chart.register(ChartDataLabels);
 
 
@@ -136,56 +137,41 @@ const columns= [
         <div className="content">
           <Routes>
             <Route path="/" element={
-              <div style= {{width:'90%', padding: '5%'}}>
+              <Container>
                 <h2 className= "Heading" >Overview of where my money is invested</h2>
                 <h5 className= "Sub-heading">Your account is broken into different financial assests. You have 6 funds.</h5>
 
                 <div style= {{width:'90%'}}> 
                   <BasicTable columns={columns} data={parsedData} />
                 </div>
-              </div>
+                </Container>
             } />
 
 
             <Route path="/fund/:id" element={
               <div>
-              
-                <div style= {{width: 1200}}>
                   <Fund data={parsedData}/> 
-                </div>
-
               </div>
             } />
-
 
             <Route path="/prison" element={
               <div>
                 <h2>Prison Industry</h2>
-              
-                <div>
-                  <PrisonIndustry data= {parsedData} names= {fund_names}/>
-                </div>
-
+                  <div>
+                    <PrisonIndustry data= {parsedData} names= {fund_names}/>
+                  </div>
                 </div>
             } />
-
 
             <Route path="/gender" element={
               <div>
                 <h2>Gender Equality</h2>
-
-                <div>
-                  <GenderEquality data={parsedData} names= {fund_names}/> 
-                </div>
-                
-
+                  <div>
+                    <GenderEquality data={parsedData} names= {fund_names}/> 
+                  </div>
               </div>
 
             } />
-
-
-            
-
 
             <Route path="/guns" element={
               <div>
@@ -226,11 +212,9 @@ const columns= [
             <Route path="/tobacco" element={
               <div>
                 <h2>Tobacco</h2>
-
-                <div>
-                  <Tobacco data= {parsedData} names={fund_names}/> 
-                </div>
-
+                  <div>
+                    <Tobacco data= {parsedData} names={fund_names}/> 
+                  </div>
               </div>
 
             } />
@@ -238,36 +222,19 @@ const columns= [
             <Route path="/weapons" element={
               <div>
                 <h2>Weapons</h2>
-
-                <div>
-                  <Weapons data= {parsedData} names= {fund_names}/> 
-                </div>
-
+                  <div>
+                    <Weapons data= {parsedData} names= {fund_names}/> 
+                  </div>
               </div>
 
             } />
-            
-
-            
 
           </Routes>
-        
-      
-            <Practice name = 'Practice passing props' />
-
-            
-
         </div>
-
-        
-    
       </div>
 
     </Router>
 
-   
-
-    
   );
 }
 
