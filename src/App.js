@@ -16,33 +16,11 @@ import Papa from 'papaparse';
 import csvData from './investValues.csv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { get_allfunds } from './utils/getAllFunds.js'
-import Container from 'react-bootstrap/Container';
 import Layout from './components/Layout';
-//Chart.register(ChartDataLabels);
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-
-// import {
-//   Chart as ChartJS,
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-//   Filler,
-// } from 'chart.js';
-
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-//   Filler
-// );
 
 function App() {
 
@@ -162,9 +140,20 @@ const columns= [
           <Routes>
             <Route path="/" element={
               <Layout>
-                <h2 className= "Heading" >Overview of where my money is invested</h2>
-                <h5 className= "Sub-heading">Your account is broken into different financial assests. You have 6 funds.</h5>
 
+            <Container className='mb-5'>
+              <Row className='mt-5'>
+                <Col  lg={8} className='text-start'>
+                  <h2 className="fw-bold">Overview of where my money is invested</h2> 
+                </Col>
+              </Row>
+
+              <Row className='mt-2'>
+                <h6 className= "text-start">Your account is broken into different financial assests. You have 6 funds.</h6>
+                <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+              </Row>
+            </Container>
+  
                   <BasicTable columns={columns} data={parsedData} />
               </Layout>
                 
@@ -178,77 +167,60 @@ const columns= [
             } />
 
             <Route path="/prison" element={
-              <div>
-                <h2>Prison Industry</h2>
+
                   <div>
                     <PrisonIndustry data= {parsedData} names= {fund_names}/>
                   </div>
-                </div>
+
             } />
 
             <Route path="/gender" element={
-              <div>
-                <h2>Gender Equality</h2>
+
                   <div>
                     <GenderEquality data={parsedData} names= {fund_names}/> 
                   </div>
-              </div>
 
             } />
 
             <Route path="/guns" element={
-              <div>
-                <h2>Guns</h2>
 
                 <div>
                   <Guns data= {parsedData} names= {fund_names}/> 
                 </div>
 
-              </div>
 
             } />
 
             <Route path="/fossilfuels" element={
-              <div>
-                <h2>Fossil Fuels</h2>
 
                 <div>
                   <FossilFuels data= {parsedData} names= {fund_names}/> 
                 </div>
 
-              </div>
-
             } />
 
             <Route path="/deforestation" element={
-              <div>
-                <h2>Deforestation</h2>
 
                 <div>
                   <Deforestation data= {parsedData} names= {fund_names}/> 
                 </div>
 
-              </div>
-
             } />
 
             <Route path="/tobacco" element={
-              <div>
-                <h2>Tobacco</h2>
+
                   <div>
                     <Tobacco data= {parsedData} names={fund_names}/> 
                   </div>
-              </div>
+
 
             } />
 
             <Route path="/weapons" element={
-              <div>
-                <h2>Weapons</h2>
                   <div>
                     <Weapons data= {parsedData} names= {fund_names}/> 
                   </div>
-              </div>
+
 
             } />
 

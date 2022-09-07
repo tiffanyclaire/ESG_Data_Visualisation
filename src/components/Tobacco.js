@@ -1,20 +1,38 @@
-import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import { get_weight } from '../utils/getWeight.js'
 import Layout from './Layout.js';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Tobacco ({data, names}) {
 
 
     const options = {
+        layout: {
+          padding: {
+              top: 40,
+          }
+        },
         plugins:{
+          legend: {
+            position: 'bottom'
+          },
+          tooltip: {
+            callbacks: {
+                label: function(item, everything) {
+                    const value = item.formattedValue
+                    return value + '%'
+                }
+            }
+          },
           datalabels: {
             display: true,
             color: 'black',
             align: "top",
             anchor: "end",
-            offset: 10,
+            offset: -1,
             formatter: function(value, context) {
                 return  Math.round(value) + '%'
             }
@@ -54,11 +72,22 @@ function Tobacco ({data, names}) {
     return (
 
       <Layout>
-          
-                <h3 className= "Heading">Tobacco</h3> 
-                <div className="barChart">
+
+        <Container className='mb-5'>
+          <Row className='mt-5'>
+            <Col  lg={8} className='text-start'>
+              <h2 className="fw-bold">Tobacco</h2> 
+            </Col>
+          </Row>
+
+          <Row className='mt-2'>
+            <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
+            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+
+            </Row>
+        </Container>
+
                     <Bar data= {tobaccoComparison} plugins={[ChartDataLabels]} options={options}/>
-                </div>
 
       </Layout>
         

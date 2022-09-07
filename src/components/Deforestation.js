@@ -1,19 +1,39 @@
-import React, { useState, useEffect} from 'react';
 import { get_weight } from '../utils/getWeight.js'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import Layout from './Layout.js';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Deforestation ({data, names}) {
 
     const options = {
+      indexAxis: 'y',
+        layout: {
+          padding: {
+              top: 40,
+              right: 40,
+          }
+        },
         plugins:{
+          
+          legend: {
+            position: 'bottom'
+          },
+          tooltip: {
+            callbacks: {
+                label: function(item, everything) {
+                    const value = item.formattedValue
+                    return value + '%'
+                }
+            }
+          },
           datalabels: {
             display: true,
             color: 'black',
-            align: "top",
+            align: "right",
             anchor: "end",
-            offset: 10,
             formatter: function(value, context) {
                 return  Math.round(value) + '%'
             }
@@ -61,11 +81,49 @@ function Deforestation ({data, names}) {
     return (
 
       <Layout>
+        <Container className='mb-5'>
+          <Row className='mt-5'>
+            <Col  lg={8} className='text-start'>
+              <h2 className="fw-bold">Deforestation</h2> 
+            </Col>
+          </Row>
+
+          <Row className='mt-2'>
+            <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
+            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+
+            </Row>
+        </Container>
+
+        <Container className='mb-5'>
+          <Bar data= {deforestationComparison} plugins={[ChartDataLabels]} options={options}/>
+        </Container>
  
-                    <h3 className= "Heading">Deforestation</h3> 
-                    <div className="barChart">
-                        <Bar data= {deforestationComparison} plugins={[ChartDataLabels]} options={options}/>
-                    </div> 
+
+
+        <Container className='mb-5'>
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Major consumer brands</h4>
+                  <p>Consumer goods retailers that source palm oil, paper/pulp, rubber, timber, cattle, and soy from deforestation-risk producers and traders and sell it to consumers worldwide.</p>
+              </Col>
+          </Row>
+
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Agricultural commodity producers and traders</h4>
+                  <p >The oil/gas screen consists of companies designated by Morningstar industry classifications as Oil and Gas Drilling, Oil and Gas Extraction and Production, Oil and Gas Equipment and Services, Oil and Gas Integrated, Oil and Gas Midstream, and Oil and Gas Refining and Marketing; upstream and midstream companies from the Global Oil/Gas Exit List.</p>
+              </Col>
+          </Row>
+
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Financiers: Banks and lenders</h4>
+                  <p >Financial institutions directly and indirectly involved in underwriting and lending to deforestation-risk producers and traders. These are the publicly listed banks drawn from the platform Forests and Finance.</p>
+              </Col>
+          </Row>
+        </Container>
+                 
             
         </Layout>
 
