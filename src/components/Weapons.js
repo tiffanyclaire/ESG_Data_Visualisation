@@ -9,9 +9,11 @@ import Col from 'react-bootstrap/Col';
 function Weapons ({data, names}) {
 
     const options = {
+      indexAxis: 'y',
         layout: {
           padding: {
               top: 40,
+              right: 40,
           }
         },
         plugins:{
@@ -29,9 +31,8 @@ function Weapons ({data, names}) {
           datalabels: {
             display: true,
             color: 'black',
-            align: "top",
+            align: "right",
             anchor: "end",
-            offset: -1,
             formatter: function(value, context) {
                 return  Math.round(value) + '%'
             }
@@ -52,7 +53,7 @@ function Weapons ({data, names}) {
         label: "Military",
         data: prison1,
         backgroundColor: [
-            'rgba(29, 0, 255, 0.7)'
+            'rgba(0, 127, 0, 0.8)'
         ]
         
       },
@@ -60,7 +61,7 @@ function Weapons ({data, names}) {
         label: "Contractor",
         data: prison2,
         backgroundColor: [
-            'rgba(106, 0, 255, 0.7)'
+            'rgba(0, 41, 234, 0.8)'
         ]
         
       },
@@ -68,7 +69,7 @@ function Weapons ({data, names}) {
         label: "Nuclear",
         data: prison3,
         backgroundColor: [
-            'rgba(194, 0, 255, 0.7)'
+            'rgba(0, 131, 249, 0.8)'
         ]
         
       },
@@ -76,7 +77,7 @@ function Weapons ({data, names}) {
         label: "Cluster",
         data: prison4,
         backgroundColor: [
-            'rgba(194, 0, 255, 0.7)'
+            'rgba(237, 0, 0, 0.8)'
         ]
         
       }
@@ -92,7 +93,7 @@ function Weapons ({data, names}) {
         
       <Layout>
 
-        <Container className='mb-5'>
+        <Container className='mb-5 '>
           <Row className='mt-5'>
             <Col  lg={8} className='text-start'>
               <h2 className="fw-bold">Weapons</h2> 
@@ -100,13 +101,47 @@ function Weapons ({data, names}) {
           </Row>
 
           <Row className='mt-2'>
-            <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
-            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <Col  lg={8} className='text-start'>
+            <h6 >Discover how much of your investments are invested in the weapon and firearms industry. </h6>
+            <h6 >This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            </Col>
 
             </Row>
         </Container>
+
+        <Container className='mb-5'>
                     <Bar data= {weaponsComparison} plugins={[ChartDataLabels]} options={options}/>
-          
+        </Container>
+
+        <Container className='mb-5'>
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Military Weapons</h4>
+                  <p>The Military Weapons screen list identifies companies flagged for arms-producing in the OECD and developing countries (except China) based on open sources. Such information is derived from The Stockholm International Peace Research Institute (SIPRI) Arms Industry Database.</p>
+              </Col>
+          </Row>
+
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Military Contractors</h4>
+                  <p>The Stockholm International Peace Research Institute (SIPRI) Arms Industry Database contains information on arms-producing and military services, and financial data for  The public companies from this top 100 list (last updated with 2017 data) were used to screen for major military contractors. </p>
+              </Col>
+          </Row>
+
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Nuclear Weapons</h4>
+                  <p>PAX, a non-profit organisation, provides information on companies identified as nuclear weapon manufacturers or servicers based on their 'Don't Bank on the Bomb 2019' data.</p>
+              </Col>
+          </Row>
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Cluster munitions / landmines</h4>
+                  <p>Cluster munition manufacturers are identified via research also carried out by PAX. Publicly-traded companies on PAX's Worldwide investments in Cluster Munitions a shared responsibility (2018) list are added to the cluster/ munitions screen list.</p>
+              </Col>
+          </Row>
+        </Container>
+        
       </Layout>
        
 

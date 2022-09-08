@@ -12,9 +12,11 @@ import Col from 'react-bootstrap/Col';
 function PrisonIndustry ({data, names}) {
 
     const options = {
+      indexAxis: 'y',
       layout: {
         padding: {
             top: 40,
+            right: 40,
         }
       },
         plugins:{
@@ -32,9 +34,8 @@ function PrisonIndustry ({data, names}) {
           datalabels: {
             display: true,
             color: 'black',
-            align: "top",
+            align: "right",
             anchor: "end",
-            offset: -1,
             formatter: function(value, context) {
                 return  Math.round(value) + '%'
             }
@@ -56,7 +57,7 @@ function PrisonIndustry ({data, names}) {
         label: "Prison Industry",
         data: prison1,
         backgroundColor: [
-            'rgba(29, 0, 255, 0.7)'
+            'rgba(106, 0, 255, 0.7)'
         ]
         
       },
@@ -64,7 +65,8 @@ function PrisonIndustry ({data, names}) {
         label: "Private Prison Operators",
         data: prison2,
         backgroundColor: [
-            'rgba(106, 0, 255, 0.7)'
+            'rgba(246, 23, 107, 0.8)'
+            
         ]
         
       },
@@ -72,7 +74,7 @@ function PrisonIndustry ({data, names}) {
         label: "Border Industry",
         data: prison3,
         backgroundColor: [
-            'rgba(194, 0, 255, 0.7)'
+            'rgba(255, 102, 0, 0.8)'
         ]
         
       }
@@ -91,8 +93,10 @@ function PrisonIndustry ({data, names}) {
           </Row>
 
           <Row className='mt-2'>
-            <h6 className= "text-start">Funds are screened for investments in companies with involvement in the prison industrial complex.</h6>
-            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <Col  lg={8} className='text-start'>
+            <h6 >Funds are screened for investments in companies with involvement in the prison industrial complex.</h6>
+            <h6 >This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            </Col>
 
             </Row>
         </Container>
@@ -113,7 +117,7 @@ function PrisonIndustry ({data, names}) {
           <Row className='mb-3 , justify-content-md-center'>
               <Col md={8} className='text-start' >
                   <h4 className='mb-3'>Private Prison Operators</h4>
-                  <p>The private prions operator screen flags companies involved in the prison industry such as private for-profit prison operators and prison services providers, private prison financing and facilities internationally.</p>
+                  <p>The private prison operator screen flags companies involved in the prison industry such as private for-profit prison operators and prison services providers, private prison financing and facilities internationally.</p>
               </Col>
           </Row>
 

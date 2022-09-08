@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 
 function Layout({ children }) {
   return (
-    <Container className= 'mb-5'>
+    <Container className= 'mb-5 , mt-5'>
       {children}
     </Container>
     

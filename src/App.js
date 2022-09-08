@@ -76,9 +76,9 @@ const columns= [
   {
     name: 'Asset Name',
     selector: row => row["Fund profile: Shareclass name"],
-    width: "20%",
+    width: "19%",
     cell: (row) =>  (
-      <Link to={'/fund/'+ row["id"]}>{row["Fund profile: Shareclass name"]}</Link>
+      <Link  to={'/fund/'+ row["id"]}>{row["Fund profile: Shareclass name"]}</Link>
     )
   },
   {
@@ -88,11 +88,11 @@ const columns= [
   {
     name: 'Shareclass Type',
     selector: row => row["Fund profile: Shareclass type"],
-    width: "15%",
+    width: "12%",
     sortable: true,
   },
   {
-    name: <Link to={'/deforestation'}>Deforestation</Link>,
+    name: <Link className={'link-styles'} to={'/deforestation'}>Deforestation</Link>,
     selector: row => row["Deforestation Free Funds: Deforestation grade"],
     conditionalCellstyles: [{
       when: row=> (row["Deforestation Free Funds: Deforestation grade"]) === "B",
@@ -103,27 +103,27 @@ const columns= [
     }],
   },
   {
-    name: <Link to={'/fossilfuels'}>Fossil Fuels</Link>,
+    name: <Link className={'link-styles'} to={'/fossilfuels'}>Fossil Fuels</Link>,
     selector:row => row["Fossil Free Funds: Fossil fuel grade"],
   },
   {
-    name: <Link to={'/prison'}>Prison</Link>,
+    name: <Link className={'link-styles'} to={'/prison'}>Prison</Link>,
     selector: row => row["Prison Free Funds: Prison industrial complex grade"],
   },
   {
-    name: <Link to={'/gender'}>Gender</Link>,
+    name: <Link className={'link-styles'} to={'/gender'}>Gender</Link>,
     selector: row => row["Gender Equality Funds: Gender equality grade"],
   },
   {
-    name: <Link to={'/weapons'}>Weapons</Link>,
+    name: <Link className={'link-styles'} to={'/weapons'}>Weapons</Link>,
     selector: row => row["Weapon Free Funds: Military weapon grade"],
   },
   {
-    name: <Link to={'/guns'}>Guns</Link>,
+    name: <Link className={'link-styles'} to={'/guns'}>Guns</Link>,
     selector: row => row["Gun Free Funds: Civilian firearm grade"],
   },
   {
-    name: <Link to={'/tobacco'}>Tobacco</Link>,
+    name: <Link className={'link-styles'} to={'/tobacco'}>Tobacco</Link>,
     selector: row => row["Tobacco Free Funds: Tobacco grade"],
   },
    

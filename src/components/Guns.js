@@ -10,9 +10,11 @@ import Col from 'react-bootstrap/Col';
 function Guns ({data, names}) {
 
     const options = {
+      indexAxis: 'y',
       layout: {
           padding: {
               top: 40,
+              right: 40,
           }
         },
         plugins:{
@@ -30,9 +32,8 @@ function Guns ({data, names}) {
           datalabels: {
             display: true,
             color: 'black',
-            align: "top",
+            align: "right",
             anchor: "end",
-            offset: -1,
             formatter: function(value, context) {
                 return  Math.round(value) + '%'
             }
@@ -53,7 +54,7 @@ function Guns ({data, names}) {
         label: "Civilian",
         data: prison1,
         backgroundColor: [
-            'rgba(29, 0, 255, 0.7)'
+            'rgba(246, 23, 107, 0.8)'
         ]
         
       },
@@ -61,7 +62,7 @@ function Guns ({data, names}) {
         label: "Manufacturer",
         data: prison2,
         backgroundColor: [
-            'rgba(106, 0, 255, 0.7)'
+            'rgba(0, 41, 234, 0.8)'
         ]
         
       },
@@ -69,7 +70,7 @@ function Guns ({data, names}) {
         label: "Retailer",
         data: prison3,
         backgroundColor: [
-            'rgba(194, 0, 255, 0.7)'
+            'rgba(255, 102, 0, 0.8)'
         ]
         
       }
@@ -89,13 +90,42 @@ function Guns ({data, names}) {
           </Row>
 
           <Row className='mt-2'>
-            <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
-            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+          <Col md={8} className='text-start' > 
+            <h6>Discover how much of your investments are invested in companies which manufacture and sell firearms within the civilian market.</h6>
+            <h6>This data was collected between 1st August 2022 and 31st August 2022 </h6>
+            </Col>
 
             </Row>
         </Container>
 
-                    <Bar data= {gunsComparison} plugins={[ChartDataLabels]} options={options}/>
+        <Container className='mb-5'>
+          <Bar data= {gunsComparison} plugins={[ChartDataLabels]} options={options}/>
+        </Container>
+
+                    
+
+          <Container className='mb-5'>
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Civilian Firearms</h4>
+                  <p>Data on companies which manufacture firearms for the civilian market (non-military use) is from Morningstar. Support for increased background checks has increased, however it is still possible to be unknowlingly investing in the firearms industry. </p>
+              </Col>
+          </Row>
+
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Gun Manufacturers</h4>
+                  <p >The gun manufacturers screen is comprised of publicly traded companies identified as manufacturers of firearms or ammunition.</p>
+              </Col>
+          </Row>
+
+          <Row className='mb-3 , justify-content-md-center'>
+              <Col md={8} className='text-start' >
+                  <h4 className='mb-3'>Gun Retailers</h4>
+                  <p >The gun retailers screen is comprised of publicly traded companies identified as retailers of firearms or ammunition for the civilian market. Billions are made through sales in handguns, shotguns, rifles, ammunition and semiautomatic weapons.</p>
+              </Col>
+          </Row>
+        </Container>
 
       </Layout>
           

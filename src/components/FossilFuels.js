@@ -11,9 +11,11 @@ import Col from 'react-bootstrap/Col';
 function FossilFuels ({data, names}) {
 
     const options = {
+      indexAxis: 'y',
         layout: {
           padding: {
               top: 40,
+              right: 40,
           }
         },
         plugins:{
@@ -31,9 +33,8 @@ function FossilFuels ({data, names}) {
           datalabels: {
             display: true,
             color: 'black',
-            align: "top",
+            align: "right",
             anchor: "end",
-            offset: -1,
             formatter: function(value, context) {
                 return  Math.round(value) + '%'
             }
@@ -53,7 +54,7 @@ function FossilFuels ({data, names}) {
         label: "Coal",
         data: prison1,
         backgroundColor: [
-            'rgba(29, 0, 255, 0.7)'
+          'rgba(0, 0, 0, 0.6)'
         ]
         
       },
@@ -61,7 +62,7 @@ function FossilFuels ({data, names}) {
         label: "Oil/Gas",
         data: prison2,
         backgroundColor: [
-            'rgba(106, 0, 255, 0.7)'
+            'rgba(255, 102, 0, 0.8)'
         ]
         
       },
@@ -69,7 +70,7 @@ function FossilFuels ({data, names}) {
         label: "Utilities",
         data: prison3,
         backgroundColor: [
-            'rgba(194, 0, 255, 0.7)'
+            'rgba(0, 41, 234, 0.8)'
         ]
         
       }
@@ -90,8 +91,10 @@ function FossilFuels ({data, names}) {
           </Row>
 
           <Row className='mt-2'>
-            <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
-            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <Col  lg={8} className='text-start'>
+            <h6 >Discover how much of your investments are invested in companies which are involved in the extraction and distirbution of fossil fuels.</h6>
+            <h6 >This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            </Col>
 
           </Row>
         </Container>

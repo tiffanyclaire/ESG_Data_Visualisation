@@ -54,7 +54,7 @@ function Deforestation ({data, names}) {
         label: "Consumer",
         data: prison1,
         backgroundColor: [
-            'rgba(29, 0, 255, 0.7)'
+          'rgba(255, 102, 0, 0.8)'
         ]
         
       },
@@ -62,7 +62,7 @@ function Deforestation ({data, names}) {
         label: "Producer",
         data: prison2,
         backgroundColor: [
-            'rgba(106, 0, 255, 0.7)'
+            'rgba(0, 127, 0, 0.8)'
         ]
         
       },
@@ -70,7 +70,7 @@ function Deforestation ({data, names}) {
         label: "Financier",
         data: prison3,
         backgroundColor: [
-            'rgba(194, 0, 255, 0.7)'
+            'rgba(0, 41, 234, 0.8)'
         ]
         
       }
@@ -89,8 +89,10 @@ function Deforestation ({data, names}) {
           </Row>
 
           <Row className='mt-2'>
-            <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
+          <Col  lg={8} className='text-start'>
+            <h6 className= "text-start">Discover how much of your investments are invested in companies which fund deforestation-risk producers, sell resources from unsustainable producers, or contribute to deforestation directly.</h6>
             <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            </Col>
 
             </Row>
         </Container>
@@ -112,7 +114,7 @@ function Deforestation ({data, names}) {
           <Row className='mb-3 , justify-content-md-center'>
               <Col md={8} className='text-start' >
                   <h4 className='mb-3'>Agricultural commodity producers and traders</h4>
-                  <p >The oil/gas screen consists of companies designated by Morningstar industry classifications as Oil and Gas Drilling, Oil and Gas Extraction and Production, Oil and Gas Equipment and Services, Oil and Gas Integrated, Oil and Gas Midstream, and Oil and Gas Refining and Marketing; upstream and midstream companies from the Global Oil/Gas Exit List.</p>
+                  <p>Companies that produce and trade palm oil, paper/pulp, rubber, timber, cattle, and soy, and have a past record or a significant risk of contributing to deforestation, land grabbing, and human rights abuses.</p>
               </Col>
           </Row>
 

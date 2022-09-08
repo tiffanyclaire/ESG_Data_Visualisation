@@ -28,14 +28,7 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 
 .Heading {
@@ -50,11 +43,16 @@
   padding-bottom: 3px;
 }
 
-
-
 .rdt_TableHeadRow{
-  background-color: #DCDCDC!important;
+  background-color:  #23253F!important;
 }
+
+.rdt_TableCol {
+  color: white;
+  font-size: 13px;
+  }
+
+
 
 .barChart{
   width: 80%;
@@ -65,11 +63,12 @@
 
 }
 
-.chartContainer{
-  display: flex;
-  align-items: center;
-  
+.link-styles {
+  color: white !important;
 }
+
+
+
 
 .card-text{
   display: flex;

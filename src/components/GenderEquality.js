@@ -12,9 +12,11 @@ import Col from 'react-bootstrap/Col';
 function GenderEquality ({data, names}) {
 
     const options = {
+      indexAxis: 'y',
       layout: {
         padding: {
             top: 40,
+            right: 40,
         }
       },
         plugins:{
@@ -32,9 +34,11 @@ function GenderEquality ({data, names}) {
           datalabels: {
             display: true,
             color: 'black',
-            align: "top",
+            align: "right",
             anchor: "end",
-            offset: -1,
+            formatter: function(value, context) {
+              return  Math.round(value) + '%'
+          }
           }
         }
       };
@@ -71,8 +75,7 @@ function GenderEquality ({data, names}) {
       label: "Weight of holdings with Equileap gender equality scores",
       data: weight,
       backgroundColor: [
-          'rgba(0, 0, 0, 0.1)',
-          'rgba(255, 118, 0, 0.6)'
+          'rgba(0, 151, 255, 0.6)',
       ]
       
     }]
@@ -84,8 +87,7 @@ function GenderEquality ({data, names}) {
       label: "Gender balance in leadership and workforce (out of 40 points)",
       data: leadership,
       backgroundColor: [
-          'rgba(0, 0, 0, 0.1)',
-          'rgba(255, 118, 0, 0.6)'
+          'rgba(0, 151, 255, 0.6)',
       ]
       
     }]
@@ -97,8 +99,8 @@ function GenderEquality ({data, names}) {
       label: "Equal compensation and work life balance (out of 30 points)",
       data: compensation,
       backgroundColor: [
-          'rgba(0, 0, 0, 0.1)',
-          'rgba(255, 118, 0, 0.6)'
+        'rgba(0, 151, 255, 0.6)',
+
       ]
       
     }]
@@ -110,8 +112,7 @@ function GenderEquality ({data, names}) {
       label: "Policies promoting gender equality (out of 20 points)",
       data: policies,
       backgroundColor: [
-          'rgba(0, 0, 0, 0.1)',
-          'rgba(255, 118, 0, 0.6)'
+        'rgba(0, 151, 255, 0.6)',
       ]
       
     }]
@@ -123,8 +124,7 @@ function GenderEquality ({data, names}) {
       label: "Commitment, transparency, and accountability (out of 10 points)",
       data: transparency,
       backgroundColor: [
-          'rgba(0, 0, 0, 0.1)',
-          'rgba(255, 118, 0, 0.6)'
+        'rgba(0, 151, 255, 0.6)',
       ]
       
     }]
@@ -141,8 +141,10 @@ function GenderEquality ({data, names}) {
           </Row>
 
           <Row className='mt-2'>
-            <h6 className= "text-start">These insights are provided by Equileap; a leading provider of gender equality data and insights.</h6>
-            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <Col  lg={8} className='text-start'>
+            <h6>These insights are provided by Equileap; a leading provider of gender equality data and insights.</h6>
+            <h6>This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            </Col>
 
             </Row>
         </Container>

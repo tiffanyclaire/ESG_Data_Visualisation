@@ -52,9 +52,7 @@ function Fund ({data}) {
       const fossilAssets = get_asset(indvFund, netAssets, "Fossil Free Funds: Fossil fuel holdings, asset");
       const weaponAssets = get_asset(indvFund, netAssets, "Weapon Free Funds: Military weapon, asset");
       const gunAssets = get_asset(indvFund, netAssets, "Gun Free Funds: Civilian firearm, asset");
-      
       const tobaccoAssets = get_asset(indvFund, netAssets, "Tobacco Free Funds: Tobacco producer, asset");
-
       const genderOverall = gender_score(indvFund, "Gender Equality Funds: Gender equality score - Overall score (out of 100 points)", 100);
  
 
@@ -67,20 +65,20 @@ function Fund ({data}) {
         data: prisonAssets,
         backgroundColor: [
             'rgba(0, 0, 0, 0.1)',
-            'rgba(255, 118, 0, 0.6)'
+            'rgba(53, 0, 231, 0.6)'
         ]
         
       }]
       };
 
       const deforestation = {
-        labels: ["Other", "Agricultural commodity producers Holdings"],
+        labels: ["Other", "Producer Holdings"],
         datasets: [{
         label: "Percent of fund assets found on major weapon screen lists ",
         data: deforestAssets,
         backgroundColor: [
             'rgba(0, 0, 0, 0.1)',
-            'rgba(255, 118, 0, 0.6)'
+            'rgba(0, 172, 53, 0.6)'
         ]
         
       }]
@@ -106,7 +104,7 @@ function Fund ({data}) {
         data: weaponAssets,
         backgroundColor: [
             'rgba(0, 0, 0, 0.1)',
-            'rgba(255, 118, 0, 0.6)'
+            'rgba(0, 61, 211, 0.8)'
         ]
         
       }]
@@ -119,7 +117,7 @@ function Fund ({data}) {
         data: gunAssets,
         backgroundColor: [
             'rgba(0, 0, 0, 0.1)',
-            'rgba(255, 118, 0, 0.6)'
+            'rgba(255, 66, 184, 0.8)'
         ]
         
       }]
@@ -132,7 +130,7 @@ function Fund ({data}) {
         data: tobaccoAssets,
         backgroundColor: [
             'rgba(0, 0, 0, 0.1)',
-            'rgba(255, 118, 0, 0.6)'
+            'rgba(234, 0, 0, 0.8)'
         ]
         
       }]
@@ -145,7 +143,7 @@ function Fund ({data}) {
         data: genderOverall,
         backgroundColor: [
             'rgba(0, 0, 0, 0.1)',
-            'rgba(255, 118, 0, 0.6)'
+            'rgba(0, 151, 255, 0.6)'
         ]
         
       }]
