@@ -2,16 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -24,17 +14,10 @@
   color: white;
 }
 
+
+
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 
@@ -50,11 +33,16 @@
   padding-bottom: 3px;
 }
 
-
-
 .rdt_TableHeadRow{
-  background-color: #DCDCDC!important;
+  background-color:  #23253F!important;
 }
+
+.rdt_TableCol {
+  color: white;
+  font-size: 13px;
+  }
+
+
 
 .barChart{
   width: 80%;
@@ -65,11 +53,10 @@
 
 }
 
-.chartContainer{
-  display: flex;
-  align-items: center;
-  
+.link-styles {
+  color: white !important;
 }
+
 
 .card-text{
   display: flex;
@@ -82,23 +69,20 @@
 }
 
 
-.card-container{
-  width: 225px;
-}
-
 .card{
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 5px;
+  width: 225px;
+  height: 350px;
 
 }
 
 .rating-text{
   font-weight: bold;
-  padding: 2px;
+  margin: 10px;
 }
 
-.heading-text{
-  padding: 2px;
- 
+.cardRow{
+  margin-top: 10px;
 }

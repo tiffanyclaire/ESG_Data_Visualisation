@@ -1,5 +1,5 @@
 
-export function get_prison(fund){
+export function get_data(){
   const a = [];
   const fossil = (((fund["Prison Free Funds: All flagged, asset"]) / (fund["Fund profile: Fund net assets"]) ) * 100)
   const other = ( 100 - (fossil))
