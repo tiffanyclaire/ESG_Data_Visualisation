@@ -5,10 +5,11 @@ import Col from 'react-bootstrap/Col';
 
 function Layout({ children }) {
   return (
-    <Container className= 'mb-5 , mt-5'>
+    <div className="bg-light">
+    <Container className= 'pb-5'>
       {children}
     </Container>
-    
+    </div>
   );
 }
 

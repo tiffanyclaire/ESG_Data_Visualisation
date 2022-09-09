@@ -75,7 +75,7 @@ function Tobacco ({data, names}) {
       <Layout>
 
         <Container className='mb-5'>
-          <Row className='mt-5'>
+          <Row className='pt-5'>
             <Col  lg={8} className='text-start'>
               <h2 className="fw-bold">Tobacco</h2> 
             </Col>
@@ -83,13 +83,15 @@ function Tobacco ({data, names}) {
 
           <Row className='mt-2'>
             <Col  lg={8} className='text-start'>
-            <h6 >Discover how much of your investments are invested in companies which produce tobacco or promote tobacco to children.</h6>
-            <h6 >This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <p>Discover how much of your investments are invested in companies which produce tobacco or promote to children.</p>
+            <h6>Click the coloured rectangles in the legend to compare the datasets individually. </h6>
+            <h6 >This data was collected between 1st August 2022 and 31st August 2022 </h6>
             </Col>
 
             </Row>
         </Container>
 
+        <Container className='pb-5 , shadow p-5 mb-5 bg-white rounded'> 
         <Container className='mb-5'>
           <Bar data= {tobaccoComparison} plugins={[ChartDataLabels]} options={options}/>
         </Container>
@@ -111,6 +113,9 @@ function Tobacco ({data, names}) {
               </Col>
           </Row>
         </Container>
+
+        </Container>
+
 
       </Layout>
         

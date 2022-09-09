@@ -84,7 +84,7 @@ function FossilFuels ({data, names}) {
       <Layout>
 
         <Container className='mb-5'>
-          <Row className='mt-5'>
+          <Row className='pt-5'>
             <Col  lg={8} className='text-start'>
               <h2 className="fw-bold">Fossil Fuels</h2> 
             </Col>
@@ -92,12 +92,15 @@ function FossilFuels ({data, names}) {
 
           <Row className='mt-2'>
             <Col  lg={8} className='text-start'>
-            <h6 >Discover how much of your investments are invested in companies which are involved in the extraction and distirbution of fossil fuels.</h6>
-            <h6 >This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <p >Discover how much of your investments are invested in companies which are involved in the extraction and distribution of fossil fuels.</p>
+            <h6>Click the coloured rectangles in the legend to compare the datasets individually. </h6>
+            <h6>This data was collected between 1st August 2022 and 31st August 2022 </h6>
             </Col>
 
           </Row>
         </Container>
+
+        <Container className='pb-5 , shadow p-5 mb-5 bg-white rounded'>
 
         <Container className='mb-5'>
                     <Bar data= {fossilComparison} plugins={[ChartDataLabels]} options={options}/>
@@ -124,6 +127,8 @@ function FossilFuels ({data, names}) {
                   <p >The fossil-fired utilities screen consists of companies designated by Morningstar industry classifications as Utilities-Independent Power Producers, Utilities-Renewable, Utilities-Diversified, Utilities-Regulated Electric, and Utilities-Regulated Gas. Despite the name, the Utilities-Renewable industry classification includes companies that distribute gas and/or burn fossil fuel for power generation. It also includes companies from the Global Coal Exit List marked as Power for Coal Industry Sector. We remove any companies in these categories that are engaged in 100% renewable operations, pure transmission, or otherwise don't distribute gas or burn fossil fuels to generate power.</p>
               </Col>
           </Row>
+        </Container>
+
         </Container>
               
       </Layout>

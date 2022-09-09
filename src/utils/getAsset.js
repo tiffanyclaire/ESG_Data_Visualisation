@@ -6,6 +6,8 @@ export function get_asset(fund, net, column){
   asset.push(other)
   asset.push(category)
 
+  
+
   return asset;
 
   }

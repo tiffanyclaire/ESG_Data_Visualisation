@@ -86,7 +86,7 @@ function PrisonIndustry ({data, names}) {
         <Layout>
 
         <Container className='mb-5'>
-          <Row className='mt-5'>
+          <Row className='pt-5'>
             <Col  lg={8} className='text-start'>
               <h2 className="fw-bold">Prison</h2> 
             </Col>
@@ -94,12 +94,16 @@ function PrisonIndustry ({data, names}) {
 
           <Row className='mt-2'>
             <Col  lg={8} className='text-start'>
-            <h6 >Funds are screened for investments in companies with involvement in the prison industrial complex.</h6>
-            <h6 >This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <p>Funds are screened for investments in companies with involvement in the prison industrial complex.</p>
+            <h6>Click the coloured rectangles in the legend to compare the datasets individually. </h6>
+            <h6 >This data was collected between 1st August 2022 and 31st August 2022 </h6>
             </Col>
 
             </Row>
         </Container>
+
+        <Container className='pb-5 , shadow p-5 mb-5 bg-white rounded'>
+
         <Container className='mb-5'>
           <Bar data= {prisonComparison} plugins={[ChartDataLabels]} options={options} />
         </Container>
@@ -127,6 +131,8 @@ function PrisonIndustry ({data, names}) {
                   <p >The border industry screen flags companies involved in incarceration and detention facilities (including facility management, youth and family detention, facility surveillance and security, transportation and deportations, and prison labor), militarization of the U.S.-Mexico border (including border construction and maintenance and border monitoring and surveillance), and immigrant monitoring and surveillance (including high-tech surveillance of immigrants, e-carceration, and bail bonds).</p>
               </Col>
           </Row>
+        </Container>
+
         </Container>
            
 

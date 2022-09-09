@@ -134,7 +134,7 @@ function GenderEquality ({data, names}) {
         <Layout> 
 
         <Container className='mb-5'>
-          <Row className='mt-5'>
+          <Row className='pt-5'>
             <Col  lg={8} className='text-start'>
               <h2 className="fw-bold">Gender Equality</h2> 
             </Col>
@@ -142,15 +142,19 @@ function GenderEquality ({data, names}) {
 
           <Row className='mt-2'>
             <Col  lg={8} className='text-start'>
-            <h6>These insights are provided by Equileap; a leading provider of gender equality data and insights.</h6>
-            <h6>This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <p>These insights are provided by Equileap; a leading provider of gender equality data and insights.</p>
+            <h6>Click the coloured rectangles in the legend to compare the datasets individually. </h6>
+            <h6>This data was collected between 1st August 2022 and 31st August 2022 </h6>
             </Col>
 
             </Row>
         </Container>
 
-        <Container className='mb-5'>
-          <Row className='mb-3'>
+        
+
+        <Container className='pb-5 , shadow p-5 mb-5 bg-white rounded'>
+        <Container className='mb-3'>
+          <Row >
               <Col md={8} className='text-start' >
                   <h4 className='mb-3'>Holdings with Equileap gender equality scores</h4>
                   <p>Below represents the percent of fund assets where Equileap gender equality company scores are available for each of the funds you invest in.</p>
@@ -163,8 +167,8 @@ function GenderEquality ({data, names}) {
           <Bar data= {genderComparison} plugins={[ChartDataLabels]} options={options}/>
         </Container>
 
-        <Container className='mb-5'>
-          <Row className='mb-3'>
+        <Container className='mb-3'>
+          <Row >
               <Col md={8} className='text-start' >
                   <h4 className='mb-3'>Gender balance in leadership and workforce</h4>
                   <p>The gender equality score for gender balance in leadership and workforce is calculated by averaging the Equileap company scores of the portfolio holdings, weighted by market value</p>
@@ -176,7 +180,7 @@ function GenderEquality ({data, names}) {
           <Bar data={genderLeadership} plugins={[ChartDataLabels]} options={optionsScores} />
         </Container>
 
-        <Container className='mb-5'>
+        <Container className='mb-3'>
           <Row className='mb-3'>
               <Col md={8} className='text-start' >
                   <h4 className='mb-3'>Equal compensation and work life balance</h4>
@@ -189,7 +193,7 @@ function GenderEquality ({data, names}) {
           <Bar data={genderCompensation} plugins={[ChartDataLabels]} options={optionsScores} />
         </Container>
 
-        <Container className='mb-5'>
+        <Container className='mb-3'>
           <Row className='mb-3'>
               <Col md={8} className='text-start' >
                   <h4 className='mb-3'>Policies promoting gender equality</h4>
@@ -202,7 +206,7 @@ function GenderEquality ({data, names}) {
           <Bar data={genderPolicy} plugins={[ChartDataLabels]} options={optionsScores} />
         </Container>
 
-        <Container className='mb-5'>
+        <Container className='mb-3'>
           <Row className='mb-3'>
               <Col md={8} className='text-start' >
                   <h4 className='mb-3'>Commitment, transparency, and accountability</h4>
@@ -213,6 +217,9 @@ function GenderEquality ({data, names}) {
 
         <Container className='mb-5'> 
           <Bar data={genderTransparency} plugins={[ChartDataLabels]} options={optionsScores}/>
+        </Container>
+
+
         </Container>
 
 

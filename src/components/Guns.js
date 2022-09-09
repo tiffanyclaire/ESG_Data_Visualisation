@@ -83,7 +83,7 @@ function Guns ({data, names}) {
       <Layout>
 
         <Container className='mb-5'>
-          <Row className='mt-5'>
+          <Row className='pt-5'>
             <Col  lg={8} className='text-start'>
               <h2 className="fw-bold">Guns</h2> 
             </Col>
@@ -91,12 +91,15 @@ function Guns ({data, names}) {
 
           <Row className='mt-2'>
           <Col md={8} className='text-start' > 
-            <h6>Discover how much of your investments are invested in companies which manufacture and sell firearms within the civilian market.</h6>
+            <p>Discover how much of your investments are invested in companies which manufacture and sell firearms within the civilian market.</p>
+            <h6>Click the coloured rectangles in the legend to compare the datasets individually. </h6>
             <h6>This data was collected between 1st August 2022 and 31st August 2022 </h6>
             </Col>
 
             </Row>
         </Container>
+
+        <Container className='pb-5 , shadow p-5 mb-5 bg-white rounded'>
 
         <Container className='mb-5'>
           <Bar data= {gunsComparison} plugins={[ChartDataLabels]} options={options}/>
@@ -125,6 +128,8 @@ function Guns ({data, names}) {
                   <p >The gun retailers screen is comprised of publicly traded companies identified as retailers of firearms or ammunition for the civilian market. Billions are made through sales in handguns, shotguns, rifles, ammunition and semiautomatic weapons.</p>
               </Col>
           </Row>
+        </Container>
+
         </Container>
 
       </Layout>

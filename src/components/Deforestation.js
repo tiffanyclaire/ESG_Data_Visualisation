@@ -81,8 +81,8 @@ function Deforestation ({data, names}) {
     return (
 
       <Layout>
-        <Container className='mb-5'>
-          <Row className='mt-5'>
+        <Container className='mb-5 '>
+          <Row className='pt-5 '>
             <Col  lg={8} className='text-start'>
               <h2 className="fw-bold">Deforestation</h2> 
             </Col>
@@ -90,12 +90,15 @@ function Deforestation ({data, names}) {
 
           <Row className='mt-2'>
           <Col  lg={8} className='text-start'>
-            <h6 className= "text-start">Discover how much of your investments are invested in companies which fund deforestation-risk producers, sell resources from unsustainable producers, or contribute to deforestation directly.</h6>
+            <p className= "text-start"> Discover how much of your investments are invested in companies which fund deforestation-risk producers, sell resources from unsustainable producers, or contribute to deforestation directly.</p>
+            <h6>Click the coloured rectangles in the legend to compare the datasets individually. </h6>
             <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
             </Col>
 
             </Row>
         </Container>
+
+        <Container className='pb-5 , shadow p-5 mb-5 bg-white rounded'>
 
         <Container className='mb-5'>
           <Bar data= {deforestationComparison} plugins={[ChartDataLabels]} options={options}/>
@@ -124,6 +127,8 @@ function Deforestation ({data, names}) {
                   <p >Financial institutions directly and indirectly involved in underwriting and lending to deforestation-risk producers and traders. These are the publicly listed banks drawn from the platform Forests and Finance.</p>
               </Col>
           </Row>
+        </Container>
+
         </Container>
                  
             

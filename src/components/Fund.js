@@ -7,9 +7,6 @@ import { Doughnut } from 'react-chartjs-2'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import ChartDataLabels from 'chartjs-plugin-datalabels'
-
-
 
 
 
@@ -22,7 +19,9 @@ function Fund ({data}) {
                 callbacks: {
                     label: function(item, everything) {
                         const value = item.formattedValue
-                        return value + '%'
+                        const col = item.label
+                        console.log(item);
+                        return  col + ': ' + value + '%'
                     }
                 }
             },
@@ -54,6 +53,8 @@ function Fund ({data}) {
       const gunAssets = get_asset(indvFund, netAssets, "Gun Free Funds: Civilian firearm, asset");
       const tobaccoAssets = get_asset(indvFund, netAssets, "Tobacco Free Funds: Tobacco producer, asset");
       const genderOverall = gender_score(indvFund, "Gender Equality Funds: Gender equality score - Overall score (out of 100 points)", 100);
+
+      console.log(deforestAssets);
  
 
       
@@ -74,7 +75,7 @@ function Fund ({data}) {
       const deforestation = {
         labels: ["Other", "Producer Holdings"],
         datasets: [{
-        label: "Percent of fund assets found on major weapon screen lists ",
+        label: "Percent of fund assets found on deforestation producer screen lists ",
         data: deforestAssets,
         backgroundColor: [
             'rgba(0, 0, 0, 0.1)',
@@ -166,8 +167,8 @@ function Fund ({data}) {
         
 
         <Container className='mb-5'>
-        <Row className='mt-5'>
-        <Col  lg={8} className='text-start'>
+        <Row className='pt-5'>
+        <Col  md={7} className='text-start'>
 
             <h2 className="fw-bold">{ indvFund["Fund profile: Shareclass name"]} </h2>
             <h4 >{ indvFund["Fund profile: Shareclass type"]} </h4>
@@ -191,15 +192,16 @@ function Fund ({data}) {
                 </Col>
             </Row>
 
-            <Row className='mt-5'>
+            <Row className='mt-3'>
+            <p className= "text-start">Data is provided by As you Sow, a non-profit foundation which promotes shareholder advocacy, social responsibility and transparency.Funds are graded based on their total exposure to each of the ESG factors, measured as the precent of fund assets invested in holdings flagged by the respective company screens. If a fund does have fossil fuel exposure in the form of direct stock holdings of companies on the five fossil fuel company screens, a letter grade is assigned based on the level of exposure. For example a fund with 0% exposure to Fossil Fuels will be assigned an 'A' Grade. </p>
             <h6 className= "text-start">This pension fund is invested in at least 1200 companies</h6>
-            <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+            <h6 className="text-start">This data was collected between 1st August 2022 and 31st August 2022 </h6>
 
             </Row>
 
         </Col> 
 
-        <Col lg={4}>
+        <Col md={{ span: 3, offset: 2}}>
             <ReportCard data={indvFund}/>
         </Col>
 
@@ -209,24 +211,25 @@ function Fund ({data}) {
     
         </Container>
 
-        <Container className='mb-5'>
+        <Container className='mb-5 , shadow p-5 mb-5 bg-white rounded'>
 
-        <Row>
-                <Col md={3} className='text-start'>
+        <Row className='mb-5'>
+                
+
+                <Col md={6} className='text-start' >
+                <h4 className='mb-3'>Equileap Gender Equality Score</h4>
+                <h6 className='mb-3' >These insights are provided by Equileap; a leading provider of gender equality data and insights.  </h6 >
+                <p>This is a market-value weighted average of the individual company scores of the fund's holdings on Equileap's 100-point scale.   In other words Company-level Equileap scores are averaged and weighted by the amount the fund invests in these companies.   </p>
+                </Col>
+                <Col md={{ span: 4, offset: 1}} className='text-start'>
                     <h5 ></h5>
                     <Doughnut data={gender} />
                 </Col>
-
-                <Col md={7} className='text-start' >
-                <h4 className='mb-3'>Equileap Gender Equality Score</h4>
-                <p>These insights are provided by Equileap; a leading provider of gender equality data and insights.  </p>
-                <p>This is a market-value weighted average of the individual company scores of the fund's holdings on Equileap's 100-point scale.   In other words Company-level Equileap scores are averaged and weighted by the amount the fund invests in these companies.   </p>
-                </Col>
         </Row>
 
-        </Container>
-
-        <Container className='mb-5'>
+        
+        <Container className='mb-5 , pt-5'>
+        
         <Row className='mb-3'>
             <Col md={8} className='text-start' >
                 <h4 className='mb-3'>Fund Holdings Breakdown</h4>
@@ -234,48 +237,52 @@ function Fund ({data}) {
                 <p >Discover below the percentage of the fund's assets which are invested the factors you care about. </p>
             </Col>
         </Row>
+
+        
         
 
     
-        <Row className='mt-5, mb-5'>
+        <Row className='mt-5, mb-5 , justify-content-center'>
             
 
-            <Col md={3} className='text-start' >
+            <Col md={4} className='text-start' >
                 <h5 >Deforestation</h5>
                 <Doughnut data={deforestation} options={options} />
             </Col>
 
-            <Col md={3} className='text-start'>
+            <Col md={4} className='text-start'>
                 <h5>Fossil Fuels</h5> 
                 <Doughnut data={fossilFuels} options={options} />  
             </Col>
 
-            <Col md={3} className='text-start'>
+            <Col md={4} className='text-start'>
                 <h5>Prison Industry</h5>
                 <Doughnut data={prisonIndustry} options={options} />  
             </Col>
         </Row>
         
-        <Row className='mt-5'>
+        <Row className='mt-5 , justify-content-center'>
             
 
-            <Col md={3} className='text-start'>
+            <Col md={4} className='text-start'>
                 <h5>Weapons</h5> 
                 <Doughnut data={weapons} options={options}/> 
             </Col>
 
-            <Col md={3} className='text-start'>
+            <Col md={4} className='text-start'>
                 <h5>Guns</h5>
                 <Doughnut data={guns} options={options} />
             </Col>
 
-            <Col md={3} className='text-start'>
+            <Col md={4} className='text-start'>
                 <h5>Tobacco</h5>
                 <Doughnut data={tobacco} options={options}/>
             </Col>
 
         
         </Row>
+
+        </Container>
 
 
         </Container> 

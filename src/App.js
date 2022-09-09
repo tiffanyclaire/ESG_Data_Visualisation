@@ -13,7 +13,7 @@ import Deforestation from './components/Deforestation'
 import Tobacco from './components/Tobacco'
 import Weapons from './components/Weapons'
 import Papa from 'papaparse';
-import csvData from './investValues.csv';
+import csvData from './MockPortfolio.csv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { get_allfunds } from './utils/getAllFunds.js'
 import Layout from './components/Layout';
@@ -83,7 +83,7 @@ const columns= [
   },
   {
     name: '% Invested',
-    selector: row => row["Prison Free Funds: All flagged, weight"],
+    selector: row => row["Invested"],
   },
   {
     name: 'Shareclass Type',
@@ -142,7 +142,7 @@ const columns= [
               <Layout>
 
             <Container className='mb-5'>
-              <Row className='mt-5'>
+              <Row className='pt-5'>
                 <Col  lg={8} className='text-start'>
                   <h2 className="fw-bold">Overview of where my money is invested</h2> 
                 </Col>
@@ -150,7 +150,7 @@ const columns= [
 
               <Row className='mt-2'>
                 <h6 className= "text-start">Your account is broken into different financial assests. You have 6 funds.</h6>
-                <h6 className="text-start">This data was collected between 1tst August 2022 and 31st August 2022 </h6>
+                <h6 className="text-start">This data was collected between 1st August 2022 and 31st August 2022 </h6>
               </Row>
             </Container>
   
@@ -161,9 +161,9 @@ const columns= [
 
 
             <Route path="/fund/:id" element={
-              <div>
+              <Layout>
                   <Fund data={parsedData}/> 
-              </div>
+              </Layout>
             } />
 
             <Route path="/prison" element={
