@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -14,17 +13,14 @@
   color: white;
 }
 
-
-
 .App-link {
   color: #61dafb;
 }
 
-
 .Heading {
   text-align: left;
   color: black;
-  padding-bottom: 5px;;
+  padding-bottom: 5px;
 }
 
 .Sub-heading {
@@ -33,56 +29,48 @@
   padding-bottom: 3px;
 }
 
-.rdt_TableHeadRow{
-  background-color:  #23253F!important;
+.rdt_TableHeadRow {
+  background-color: #23253f !important;
 }
 
 .rdt_TableCol {
   color: white;
   font-size: 13px;
-  }
+}
 
-
-
-.barChart{
+.barChart {
   width: 80%;
 }
 
-.containerLarge{
+.containerLarge {
   margin-bottom: 5%;
-
 }
 
 .link-styles {
   color: white !important;
 }
 
-
-.card-text{
+.card-text {
   display: flex;
   text-align: center;
   flex-wrap: no-wrap;
   justify-content: space-between;
-  margin-bottom: 2px ;
-  
-  
+  margin-bottom: 2px;
 }
 
-
-.card{
+.card {
   padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   width: 225px;
   height: 350px;
-
 }
 
-.rating-text{
+.rating-text {
   font-weight: bold;
   margin: 10px;
 }
 
-.cardRow{
+.cardRow {
   margin-top: 10px;
 }
