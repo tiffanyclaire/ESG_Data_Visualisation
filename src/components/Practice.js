@@ -1,10 +1,7 @@
-import React from 'react' 
+import React from "react";
 
 const Practice = (props) => {
-    return (
-        <div>{props.name} </div>
-    );
-
-}
+  return <div>{props.name} </div>;
+};
 
 export default Practice;
