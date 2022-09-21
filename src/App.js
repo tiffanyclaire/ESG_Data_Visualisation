@@ -50,8 +50,12 @@ function App() {
     },
   };
 
+  console.log(parsedData);
+
   // List of fund names
   const fund_names = get_allfunds(parsedData);
+
+  console.log(fund_names)
 
   // Options for Horizontal Chart
   //const options = {
@@ -110,7 +114,7 @@ function App() {
     {
       name: (
         <Link className={"link-styles"} to={"/prison"}>
-          Prison
+          Prison Sector
         </Link>
       ),
       selector: (row) =>
@@ -171,7 +175,7 @@ function App() {
                     <Row className="mt-2">
                       <h6 className="text-start">
                         Your account is broken into different financial assests.
-                        You have 6 funds.
+                        You have 7 funds.
                       </h6>
                       <h6 className="text-start">
                         This data was collected between 1st August 2022 and 31st
@@ -180,7 +184,7 @@ function App() {
                     </Row>
                   </Container>
 
-                  <BasicTable columns={columns} data={parsedData} />
+                  <BasicTable columns={columns} data={parsedData} />  
                 </Layout>
               }
             />
