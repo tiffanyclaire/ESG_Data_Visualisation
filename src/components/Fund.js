@@ -203,7 +203,7 @@ function Fund({ data }) {
               <p className="text-start">
                 Data is provided by As you Sow, a non-profit foundation which
                 promotes shareholder advocacy, social responsibility and
-                transparency.Funds are graded based on their total exposure to
+                transparency. Funds are graded based on their total exposure to
                 each of the ESG factors, measured as the precent of fund assets
                 invested in holdings flagged by the respective company screens.
                 If a fund does have fossil fuel exposure in the form of direct
@@ -255,11 +255,11 @@ function Fund({ data }) {
               <h4 className="mb-3">Fund Holdings Breakdown</h4>
               <h6>
                 This fund has been screened for direct stock holdings in each of
-                the ESG categories.
+                the ESG categories. 
               </h6>
               <p>
                 Discover below the percentage of the fund's assets which are
-                invested the factors you care about.{" "}
+                invested the factors you care about. The formula for holding weight is holding market value divided by the sum of the market value for all long holdings in the portfolio. Long holdings are investments that are held for one year or more. Short-term holdings are not considered in this calculation. {" "}
               </p>
             </Col>
           </Row>

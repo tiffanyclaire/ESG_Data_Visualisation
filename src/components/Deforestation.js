@@ -40,35 +40,27 @@ function Deforestation({ data, names }) {
   };
 
   // getting three datasets
-  const prison1 = get_weight(
-    data,
-    "Deforestation Free Funds: Deforestation-risk consumer brand, weight"
-  );
-  const prison2 = get_weight(
-    data,
-    "Deforestation Free Funds: Deforestation-risk producer, weight"
-  );
-  const prison3 = get_weight(
-    data,
-    "Deforestation Free Funds: Deforestation-risk financier, weight"
-  );
+  
+  const consumer_brand = get_weight(data,"Deforestation Free Funds: Deforestation-risk consumer brand, weight");
+  const producer = get_weight(data,"Deforestation Free Funds: Deforestation-risk producer, weight");
+  const financier = get_weight(data,"Deforestation Free Funds: Deforestation-risk financier, weight");
 
   const deforestationComparison = {
     labels: names,
     datasets: [
       {
         label: "Consumer",
-        data: prison1,
+        data: consumer_brand,
         backgroundColor: ["rgba(255, 102, 0, 0.8)"],
       },
       {
         label: "Producer",
-        data: prison2,
+        data: producer,
         backgroundColor: ["rgba(0, 127, 0, 0.8)"],
       },
       {
         label: "Financier",
-        data: prison3,
+        data: financier,
         backgroundColor: ["rgba(0, 41, 234, 0.8)"],
       },
     ],
